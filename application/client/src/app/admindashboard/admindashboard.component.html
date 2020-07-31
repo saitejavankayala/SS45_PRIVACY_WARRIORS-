@@ -1,0 +1,122 @@
+<div class="wrapper">
+
+    <nav>
+  
+      <header>
+        <span></span>
+        John Doe
+        <a></a>
+      </header>
+  
+      <ul>
+        <li><span>Navigation</span></li>
+        <li><a  routerLink="/admindashboard" routerLinkActive="active" class="active">Dashboard</a></li>
+        <li><a routerLink="/adminprofile" routerLinkActive="active">Userprofile</a></li>
+        <li><a routerLink="/" routerLinkActive="active"></a></li>
+        <li><a routerLink="/" routerLinkActive="active"></a></li>
+        <li><a routerLink="/" routerLinkActive="active"></a></li>
+        <li><a routerLink="/" routerLinkActive="active"></a></li>
+        <li><a>FAQ</a></li>
+        <li><span>Other</span></li>
+        <li><a>Search</a></li>
+        <li><a>Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+  
+    </nav>
+    <div class="pagecontent" style="background-color: darkslategray;">
+    <div class="cards-list" >
+  
+  
+  
+    
+      <div class="card 1">
+        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+        <div class="card_title title-white">
+          <p>Card Title</p>
+        </div>
+      </div>
+  
+  
+  
+      
+        <div class="card 2">
+        <div class="card_image">
+          <img src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg" />
+          </div>
+        <div class="card_title title-white">
+          <p>Card Title</p>
+        </div>
+      </div>
+  
+  
+  
+  
+  
+  
+  
+      
+      <div class="card 3">
+        <div class="card_image">
+          <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+        </div>
+        <div class="card_title">
+          <p>Card Title</p>
+        </div>
+      </div>
+        
+  
+  
+  
+  
+        <div class="card 4">
+        <div class="card_image">
+          <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+          </div>
+        <div class="card_title title-black">
+          <p>Card Title</p>
+        </div>
+        </div>
+      
+    
+      <div class="card 1">
+        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+        <div class="card_title title-white">
+          <p>Card Title</p>
+        </div>
+      </div>
+      
+        <div class="card 2">
+        <div class="card_image">
+          <img src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg" />
+          </div>
+        <div class="card_title title-white">
+          <p>Card Title</p>
+        </div>
+      </div>
+      
+      
+      
+    </div>
+    <div>
+      <mat-tab-group (selectedIndexChange)="getregisteredusers($event)">
+        <mat-tab label="Registered Users">
+          <table mat-table [dataSource]="allUsers" multiTemplateDataRows class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="usertype">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
+              <td mat-cell *matCellDef="let element"> {{element.usertype}} </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"></tr>
+          </table>
+        </mat-tab>
+    </mat-tab-group>
+    </div>
+    
+  </div>
+  <router-outlet></router-outlet>

@@ -1,0 +1,82 @@
+
+<div class="wrapper">
+
+    <nav>
+  
+      <header>
+        <span></span>
+        John Doe
+        <a></a>
+      </header>
+  
+      <ul>
+        <li><span>Navigation</span></li>
+        <li><a  routerLink="/doctordashboard" routerLinkActive="active" class="active">Dashboard</a></li>
+        <li><a routerLink="/profile" routerLinkActive="active">Userprofile</a></li>
+        <li><a routerLink="/appointmenthistory" routerLinkActive="active">appointmenthistory</a></li>
+        <li><a routerLink="/appointments" routerLinkActive="active">appointments</a></li>
+        <li><a routerLink="/" routerLinkActive="active"></a></li>
+        <li><a routerLink="/" routerLinkActive="active"></a></li>
+        <li><a>FAQ</a></li>
+        <li><span>Other</span></li>
+        <li><a>Search</a></li>
+        <li><a>Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+  
+    </nav>
+    
+
+    <!-- START FORM BODY -->
+    <div id="container">
+      <header>
+        <img src="https://auctionking.com/assets/charity/logo/YourLogoHere.png">
+        <h1>Diagnosis Form</h1>
+      </header>
+      
+      <form (ngSubmit)="ff.form.valid && submit()" #ff="ngForm" novalidate>
+        <fieldset>
+          <legend>Fields marked with * are required</legend>
+          <br/>
+
+          <!-- START DIV part-1 PERSONAL INFORMATION -->
+          <div id="part-1">
+            <h2>Personal Information (required)</h2>
+            <label for="name">First Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required>
+            <br/>
+            <label for="age">Age</label>
+            <input type="text" class="form-control" name="age" [(ngModel)]="model.age" #age="ngModel" required>
+            <br/>
+            <label for="gender">Gender</label>
+            <input type="text" class="form-control" name="gender" [(ngModel)]="model.gender" #gender="ngModel" required>
+            <br/>
+            <label for="mobile">Mobile</label>
+            <input type="text" class="form-control" name="mobile" [(ngModel)]="model.mobile" #mobile="ngModel" required>
+            <br/>
+            <label for="diagnosis">Prescreption</label>
+            <br/>
+            <textarea rows="5" class="form-control" name="diagnosis" [(ngModel)]="model.diagnosis" #diagnosis="ngModel" cols="50" id="prescreption" tabindex="-1"></textarea>
+          
+
+           <!--<label for="lab-reports">Lab Reports</label>
+            <br/>
+            <textarea rows="5" class="form-control" name="labtests" [(ngModel)]="model.labtests" #labtests="ngModel" cols="50" name="labtests" tabindex="-1"></textarea>
+            <br>
+           
+            <label for="prescreption">Prescreption</label>
+            <br/>
+            <textarea rows="5" class="form-control" name="prescreption" [(ngModel)]="model.prescreption" #prescreption="ngModel" cols="50" id="prescreption" tabindex="-1"></textarea>
+          </div>-->
+          <!-- END DIV part-3 ACCOUNT INFORMATION -->
+          <br/><br/>
+          <button mat-stroked-button color="accent" class="btn-block" type="submit" style="width: 100%;">Submit</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <!-- END FORM BODY -->
+ 
+
+  </div>
+  <router-outlet></router-outlet>

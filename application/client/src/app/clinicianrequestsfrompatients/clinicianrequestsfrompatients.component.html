@@ -1,0 +1,80 @@
+<div class="wrapper">
+
+    <nav>
+  
+      <header>
+        <span></span>
+        John Doe
+        <a></a>
+      </header>
+  
+      <ul>
+        <li><span>Navigation</span></li>
+        <li><a  routerLink="/cliniciandashboard" routerLinkActive="active" class="active">Dashboard</a></li>
+        <li><a routerLink="/clinicianprofile" routerLinkActive="active">Userprofile</a></li>
+        <li><a routerLink="/clinicianrequestsfrompatients" routerLinkActive="active">clinicianrequestsfrompatients</a></li>
+        <li><a routerLink="/clinicianpastlabreports" routerLinkActive="active">clinicianpastlabreports</a></li>
+        <li><a routerLink="/" routerLinkActive="active"></a></li>
+        <li><a routerLink="/" routerLinkActive="active"></a></li>
+        <li><a>FAQ</a></li>
+        <li><span>Other</span></li>
+        <li><a>Search</a></li>
+        <li><a>Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+  
+    </nav>
+    <div id="container">
+      <header>
+        <img src="https://auctionking.com/assets/charity/logo/YourLogoHere.png">
+        <h1>Diagnosis Form</h1>
+      </header>
+      
+      <form (ngSubmit)="ff.form.valid && submit()" #ff="ngForm" novalidate>
+        <fieldset>
+          <legend>Fields marked with * are required</legend>
+          <br/>
+
+          <!-- START DIV part-1 PERSONAL INFORMATION -->
+          <div id="part-1">
+            <h2>Personal Information (required)</h2>
+            <label for="prescriptionId">Patient Unique Id</label>
+            <input type="text" class="form-control" name="prescriptionId" [(ngModel)]="model.prescriptionId" #prescriptionId="ngModel" required>
+            <br/>
+            <label for="aadhar">Aadhar</label>
+            <input type="text" class="form-control" name="aadhar" [(ngModel)]="model.aadhar" #aadhar="ngModel" required>
+            <br/>
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required>
+            <br/>
+            <label for="age">Age</label>
+            <input type="text" class="form-control" name="age" [(ngModel)]="model.age" #age="ngModel" required>
+            <br/>
+            <label for="gender">Gender</label>
+            <input type="text" class="form-control" name="gender" [(ngModel)]="model.gender" #gender="ngModel" required>
+            <br/>
+            <label for="pdf">Pdf</label>
+            <input type="text" class="form-control" name="pdf" [(ngModel)]="model.pdf" #pdf="ngModel" required>
+            <br/>
+            
+           <!--<label for="lab-reports">Lab Reports</label>
+            <br/>
+            <textarea rows="5" class="form-control" name="labtests" [(ngModel)]="model.labtests" #labtests="ngModel" cols="50" name="labtests" tabindex="-1"></textarea>
+            <br>
+           
+            <label for="prescreption">Prescreption</label>
+            <br/>
+            <textarea rows="5" class="form-control" name="prescreption" [(ngModel)]="model.prescreption" #prescreption="ngModel" cols="50" id="prescreption" tabindex="-1"></textarea>
+          </div>-->
+          <!-- END DIV part-3 ACCOUNT INFORMATION -->
+          <br/><br/>
+          <button mat-stroked-button color="accent" class="btn-block" type="submit" style="width: 100%;">Submit</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <!-- END FORM BODY -->
+ 
+    
+  </div>
+  <router-outlet></router-outlet>

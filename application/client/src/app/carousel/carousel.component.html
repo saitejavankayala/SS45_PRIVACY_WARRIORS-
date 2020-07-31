@@ -1,0 +1,16 @@
+<div class="carousel">
+	<!-- slides -->
+	<ul class="slides">
+		<li class="slide" *ngFor="let slide of slides; let i = index;" [@slideState]="getAnimationSlideState(i)" (click)="onclk($event)"
+        (click)="onclick($event)">
+			<ng-container *ngTemplateOutlet="slideTemplateRef; context: { $implicit: slide }"></ng-container>
+		</li>
+	</ul>
+	<!-- navigations & thumbnails -->
+	<div class="navigations">
+		
+		
+        
+    
+	</div>
+</div>

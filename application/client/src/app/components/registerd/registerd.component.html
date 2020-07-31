@@ -1,0 +1,137 @@
+
+<body style="background-image: url(assets/log.webp);">
+<div class="form_wrapper">
+  <div class="form_container">
+    <div class="title_container">
+      <h2>Registration Form</h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <form (ngSubmit)="ff.form.valid && doctoronclick()" #ff="ngForm" novalidate>
+          <div class="input_field" > <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="text" class="form-control" placeholder="AadharNumber" name="duserid" [(ngModel)]="model.duserid" #duserid="ngModel"  />
+            <div *ngIf="ff.submitted && !duserid.valid" class="help-block">It should have 12 digits.<br>It should not contains any alphabet and special characters.<br>It should have white space after every 4 digits.</div>
+          </div>
+          <div class="input_field" > <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+            <input type="password" class="form-control" placeholder="Password" name="dpassword" [(ngModel)]="model.dpassword" #dpassword="ngModel" required pattern="^(?:(?:(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]))|(?:(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))|(?:(?=.*[0-9])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))|(?:(?=.*[0-9])(?=.*[a-z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))).{8,32}$"/>
+            <div *ngIf="ff.submitted && !dpassword.valid" class="help-block">password should be:At least 8 characters in length, but no more than 32.
+              <br>atleast<br> 1       lowercase<br>1        uppercase<br>1 digit <br>1 special character</div>
+          </div>
+          <div class="input_field" > <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="text" class="form-control" placeholder="Name" name=" name" [(ngModel)]="model. name" #name="ngModel" required/>
+            <div *ngIf="f.submitted && !name.valid" class="help-block">doctor name is required</div>
+          </div>
+          <div class="input_field select_option">
+            <select class="form-control" name="gender" [(ngModel)]="model.gender" #gender="ngModel">
+              <option>Select Gender</option>
+              <option>male</option>
+              <option>female</option>
+              <option>others</option>
+            </select>
+            <div class="select_arrow"></div>
+          </div>
+          <div class="input_field" > <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="date" class="form-control" placeholder="Date of Birth" name="dob" [(ngModel)]="model.dob" #dob="ngModel" required/>
+            <div *ngIf="f.submitted && !mobile.valid" class="help-block">Date of Birth is required</div>
+          </div>
+          <div class="input_field" > <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="text" class="form-control" placeholder="Mobile No." name="mobile" [(ngModel)]="model.mobile" #mobile="ngModel" required/>
+            <div *ngIf="f.submitted && !mobile.valid" class="help-block">mobile number is required</div>
+          </div>
+          <div class="input_field" > <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="text" class="form-control" placeholder="Email" name="mail" [(ngModel)]="model.mail" #mail="ngModel" required />
+            <div *ngIf="f.submitted && !mail.valid" class="help-block">Email is required</div>
+          </div>
+         
+         
+          <!--<div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+            <input type="password" name="password" placeholder="Re-type Password" required />
+          </div>
+          <div class="row clearfix">
+            <div class="col_half">
+              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                <input type="text" name="name" placeholder="First Name" />
+              </div>
+            </div>
+            <div class="col_half">
+              <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                <input type="text" name="name" placeholder="Last Name" required />
+              </div>
+            </div>
+          </div>
+            	<div class="input_field radio_option">
+              <input type="radio" name="radiogroup1" id="rd1">
+              <label for="rd1">Male</label>
+              <input type="radio" name="radiogroup1" id="rd2">
+              <label for="rd2">Female</label>
+              </div>
+              <div class="input_field select_option">
+                <select>
+                  <option>Select a country</option>
+                  <option>Option 1</option>
+                  <option>Option 2</option>
+                </select>
+                <div class="select_arrow"></div>
+              </div>
+            <div class="input_field checkbox_option">
+            	<input type="checkbox" id="cb1">
+    			<label for="cb1">I agree with terms and conditions</label>
+            </div>
+            <div class="input_field checkbox_option">
+            	<input type="checkbox" id="cb2">
+    			<label for="cb2">I want to receive the newsletter</label>
+            </div>-->
+            <div class="captcha">
+              <div class="spinner">
+                <label>
+                  <input type="checkbox" onclick="$(this).attr('disabled','disabled');">
+                  <span class="checkmark"><span>&nbsp;</span></span>
+                </label>
+              </div>
+              <div class="text">
+                I'm not a robot
+              </div>
+              <div class="logo">
+                <img src="https://forum.nox.tv/core/index.php?media/9-recaptcha-png/"/>
+                <p>reCAPTCHA</p>
+                <small>Privacy - Terms</small>
+              </div>
+            </div>
+                     
+
+            <button mat-stroked-button color="accent" class="btn-block" type="submit" style="width: 100%;">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" >
+
+    <mat-card class="box" style="margin-top: 48"> 
+      <mat-card-header>
+        <mat-card-title>Log in</mat-card-title>
+      </mat-card-header>
+  
+      <form  [formGroup]="service.form" class="example-form">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input formControlName="LogInId" matInput placeholder="LogInId" required="">
+            <mat-error>This field is mandatory.</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input formControlName="Password" matInput placeholder="Password" required="">
+            <mat-error *ngIf="service.form.controls['Password'].errors?.required">This field is mandatory.</mat-error>
+          <mat-error *ngIf="service.form.controls['Password'].errors?.minlength">Minimum 6 charactors (digit,lwrcase,uprcase,symbol).</mat-error>
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button [routerLink]="['/ppdashboard']" color="accent" class="btn-block" type="submit" [disabled]="service.form.invalid">Log in</button>
+        <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+      </form>
+    </mat-card>
+  
+  </div>-->
+</body>
+<router-outlet></router-outlet>
