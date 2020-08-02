@@ -200,7 +200,7 @@ supplychainRouter.route('/appointment/:userid').get(function (request, response)
             //  response is already a string;  not a buffer
             let appointments = queryOrderResponse;
             response.status(STATUS_SUCCESS);
-          // console.log(appointments);
+           console.log(appointments);
             response.send(appointments);
         }, (error) => {
             response.status(STATUS_SERVER_ERROR);

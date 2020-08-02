@@ -17,10 +17,12 @@ export class PatientdashboardComponent implements OnInit {
   loading = false;
   currentUser: any;
   appointments:any[];
+  doctors:any[];
   pendings:number=0;
   totals:number=0;
   accepteds:number=0;
   rejecteds:number=0;
+  specialization:string;
   constructor(public nav: NavbarService,private api: ApiService, private user: UserService, public dialog: MatDialog,private router:Router,private authService:AuthService,private dataservice:DataService) { }
   ngOnInit() {
     this.nav.hide();
@@ -31,6 +33,41 @@ export class PatientdashboardComponent implements OnInit {
 
     // Load up the Orders from backend
     this.getappointmentsdoctor(0);
+    this.getdoctors();
+  }
+  search(){
+    if(this.specialization!=""){
+     this.doctors=this.doctors.filter(res=>{
+       return res.name.toLocaleLowerCase().match(this.specialization.toLocaleLowerCase());
+      });
+    }
+    else if(this.specialization==""){
+     this.ngOnInit();
+    }
+    
+  }
+  getdoctors() {
+    this.doctors  = [];
+    this.api.getAllUsers().subscribe(allUsers => {
+      var userArray = Object.keys(allUsers).map(function (userIndex) {
+        let user = allUsers[userIndex];
+        // do something with person
+        
+        return user;
+      });
+         ///alert(userArray['usertype']);
+      for (let u of userArray) {
+        if (u['usertype'] == "doctor") {
+          this.doctors.push(u);
+        }
+      }
+      console.log("List of doctors: ");
+      console.log(this.doctors);
+      //alert(this.doctors);
+    }, error => {
+      console.log(JSON.stringify(error));
+   alert("Problem getting list of users: " + error['error']['message']);
+    });
   }
   getappointmentsdoctor(tab) {
     if(tab==0){

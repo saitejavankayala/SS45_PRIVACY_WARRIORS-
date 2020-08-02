@@ -1,1 +1,62 @@
-<p>blockchain works!</p>
+<div class="wrapper">
+
+    <nav>
+  
+      <header>
+        <span></span>
+        John Doe
+        <a></a>
+      </header>
+  
+      <ul>
+        <li><span>Navigation</span></li>
+        <li><a  routerLink="/patientdashboard" routerLinkActive="active" class="active">Dashboard</a></li>
+        <li><a routerLink="/user" routerLinkActive="active">Userprofile</a></li>
+        <li><a routerLink="/ehr" routerLinkActive="active">EhrLogin</a></li>
+        <li><a routerLink="/pharmacy" routerLinkActive="active">PharmacyDetails</a></li>
+        <li><a routerLink="/doctor" routerLinkActive="active">PatientMedicalHistory</a></li>
+        <li><a><button (click)="appointment()">NewAppointment</button></a></li>
+        <li><a routerLink="/blockchain" routerLinkActive="active">List of Doctors</a></li>
+        <li><input type="text" [(ngModel)]="specialization" (input)="search()">
+          <table>
+              <tr>
+              <td>Name</td>
+              </tr>
+          
+              <tr *ngFor="let o of doctors">
+                 <td>{{o. specialization}}</td> 
+                 <td>{{o.name}}</td> 
+                 <td>{{o.hospitalname}}</td> 
+              </tr>
+          </table></li>
+        <li><a>FAQ</a></li>
+        <li><span>Other</span></li>
+        <li><a>Search</a></li>
+        <li><a>Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+  
+    </nav>
+    <div class="pagecontent" style="background-color: darkslategray;">
+   
+        <input type="text" [(ngModel)]="specialization" (input)="search()">
+        <table>
+            <tr>
+            <td>Doctor specialization</td>
+            <td>Doctor Name</td>
+            <td>Hospital Name</td>
+            </tr>
+        
+            <tr *ngFor="let o of doctors">
+               <td>{{o.specialization}}</td> 
+               <td>{{o.name}}</td> 
+               <td>{{o.hospitalname}}</td> 
+            </tr>
+        </table>
+  
+  
+     
+    </div>
+    
+  </div>
+  <router-outlet></router-outlet>

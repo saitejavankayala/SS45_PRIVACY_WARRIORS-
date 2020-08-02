@@ -16,6 +16,19 @@
       <li><a routerLink="/pharmacy" routerLinkActive="active">PharmacyDetails</a></li>
       <li><a routerLink="/doctor" routerLinkActive="active">PatientMedicalHistory</a></li>
       <li><a><button (click)="appointment()">NewAppointment</button></a></li>
+      <li><a routerLink="/blockchain" routerLinkActive="active">List of Doctors</a></li>
+      <li><input type="text" [(ngModel)]="specialization" (input)="search()">
+        <table>
+            <tr>
+            <td>Name</td>
+            </tr>
+        
+            <tr *ngFor="let o of doctors">
+               <td>{{o. specialization}}</td> 
+               <td>{{o.name}}</td> 
+               <td>{{o.hospitalname}}</td> 
+            </tr>
+        </table></li>
       <li><a>FAQ</a></li>
       <li><span>Other</span></li>
       <li><a>Search</a></li>
