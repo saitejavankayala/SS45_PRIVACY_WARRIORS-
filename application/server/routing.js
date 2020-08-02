@@ -132,7 +132,7 @@ supplychainRouter.route('/request-appointment/').post(function (request, respons
             // process response
             console.log('\nProcess requesting appointment.');
             let ehr = Ehr.fromBuffer(result);
-            console.log(`userid ${ehr.patientUniqueId},name=${ehr.patientName}, mobile = ${ehr.patientMobile}, dob = ${ehr.patientDob},gender=${ehr.patientGender},mail=${ehr.patientMail},doctorname=${ehr.doctorId},specialisttype=${ehr.appointment_for},date=${ehr.appontmentDate},duration=${ehr.duration}, state = ${ehr.currentAppointmentState},CurrentUserId = ${ehr.userId}`);
+            //console.log(`userid ${ehr.patientUniqueId},name=${ehr.patientName}, mobile = ${ehr.patientMobile}, dob = ${ehr.patientDob},gender=${ehr.patientGender},mail=${ehr.patientMail},doctorname=${ehr.doctorId},specialisttype=${ehr.appointment_for},date=${ehr.appontmentDate},duration=${ehr.duration}, state = ${ehr.currentAppointmentState},CurrentUserId = ${ehr.userId}`);
             response.status(STATUS_SUCCESS);
             response.send(ehr);
         }, (error) => {
@@ -148,7 +148,7 @@ supplychainRouter.route('/doctor-appointment/:userid').get(function (request, re
             //  response is already a string;  not a buffer
             let appointments = queryOrderResponse;
             response.status(STATUS_SUCCESS);
-            console.log(appointments);
+            //console.log(appointments);
             response.send(appointments);
         }, (error) => {
             response.status(STATUS_SERVER_ERROR);
@@ -164,7 +164,26 @@ supplychainRouter.route('/acceptreject/').post(function (request, response) {
             //  response is already a string;  not a buffer
  
             let order =Ehr.fromBuffer(queryOrderResponse);
-            console.log(`user ${order.patientUniqueId} : state = ${order.currentAppointmentState}`);
+            //console.log(`user ${order.patientUniqueId} : state = ${order.currentAppointmentState}`);
+            response.status(STATUS_SUCCESS);
+           response.send(order);
+        }, (error) => {
+            response.status(STATUS_SERVER_ERROR);
+            response.send(utils.prepareErrorResponse(error, STATUS_SERVER_ERROR,
+                "There was a problem getting the list of appointments."));
+        });
+}); 
+supplychainRouter.route('/accessrevoke/').post(function (request, response) {
+    let userType = request.body.patient;
+    let status=request.body.status;
+    console.log(userType,status);
+    submitTx(request, 'accessrevoke', userType,request.body.status)
+        .then((queryOrderResponse) => {
+            //  response is already a string;  not a buffer
+           // console.log(queryOrderResponse)
+            let order =Ehr.fromBuffer(queryOrderResponse);
+            
+            //console.log(`user ${order.patientUniqueId} : state = ${order.currentAppointmentState}`);
             response.status(STATUS_SUCCESS);
            response.send(order);
         }, (error) => {
@@ -181,7 +200,7 @@ supplychainRouter.route('/appointment/:userid').get(function (request, response)
             //  response is already a string;  not a buffer
             let appointments = queryOrderResponse;
             response.status(STATUS_SUCCESS);
-           console.log(appointments);
+          // console.log(appointments);
             response.send(appointments);
         }, (error) => {
             response.status(STATUS_SERVER_ERROR);
@@ -189,9 +208,24 @@ supplychainRouter.route('/appointment/:userid').get(function (request, response)
                 "There was a problem getting the list of appointments."));
         });
 });  //  process route orders/
+supplychainRouter.route('/pharmacy-details/:userid').get(function (request, response) {
+    console.log(request.params.userid);
+    submitTx(request, 'queryAlldata', request.params.userid)
+        .then((queryOrderResponse) => {
+            //  response is already a string;  not a buffer
+            let appointments = queryOrderResponse;
+            response.status(STATUS_SUCCESS);
+          // console.log(appointments);
+            response.send(appointments);
+        }, (error) => {
+            response.status(STATUS_SERVER_ERROR);
+            response.send(utils.prepareErrorResponse(error, STATUS_SERVER_ERROR,
+                "There was a problem getting the list of appointments."));
+        });
+});
 supplychainRouter.route('/getdetails/:userid').get(function (request, response) {
     console.log(request.params.userid);
-    submitTx(request, 'userprofile', request.params.userid)
+    submitTx(request, 'queryAlldata', request.params.userid)
         .then((queryOrderResponse) => {
             //  response is already a string;  not a buffer
             let appointments = queryOrderResponse;
@@ -214,7 +248,7 @@ supplychainRouter.route('/accept-appointment/').post(function (request, response
          let status="pending"
          console.log(ctx);
          
-         console.log(`userid ${ehr.patientUniqueId},name=${ehr.patientName}, mobile = ${ehr.patientMobile}, dob = ${ehr.patientDob},gender=${ehr.patientGender},mail=${ehr.patientMail},doctorname=${ehr.doctorId},specialisttype=${ehr.appointment_for},date=${ehr.appontmentDate},duration=${ehr.duration}, status = ${status  }`);
+        // console.log(`userid ${ehr.patientUniqueId},name=${ehr.patientName}, mobile = ${ehr.patientMobile}, dob = ${ehr.patientDob},gender=${ehr.patientGender},mail=${ehr.patientMail},doctorname=${ehr.doctorId},specialisttype=${ehr.appointment_for},date=${ehr.appontmentDate},duration=${ehr.duration}, status = ${status  }`);
          response.status(STATUS_SUCCESS);
          response.send(ehr);
      }, (error) => {
@@ -230,7 +264,7 @@ supplychainRouter.route('/prescription/').post(function (request, response) {
          // process response
          console.log('\nProcess requesting appointment.');
          let diag = diagnosis.fromBuffer(result);
-         console.log(`userid ${diag.patientUniqueId},name=${diag.name} ,age=${diag.age},gender=${diag.gender},mobile=${diag.mobile},prescription=${diag.diagnosis}`);
+      //   console.log(`userid ${diag.patientUniqueId},name=${diag.name} ,age=${diag.age},gender=${diag.gender},mobile=${diag.mobile},prescription=${diag.diagnosis}`);
          response.status(STATUS_SUCCESS);
          response.send(diag);
      }, (error) => {
@@ -248,7 +282,7 @@ supplychainRouter.route('/reports/').post(function (request, response) {
          console.log('\nProcess report storage.');
          let rep = reports.fromBuffer(result);
          
-         console.log(`userid ${rep.patientUniqueId},name=${rep.name} , age = ${rep.age  },gender=${rep.gender},aadhar=${rep.aadhar},pdf=${rep.pdf}`);
+      //   console.log(`userid ${rep.patientUniqueId},name=${rep.name} , age = ${rep.age  },gender=${rep.gender},aadhar=${rep.aadhar},pdf=${rep.pdf}`);
          response.status(STATUS_SUCCESS);
          response.send(rep);
      }, (error) => {
@@ -357,6 +391,7 @@ supplychainRouter.route('/enroll-doctor/').post(function (request, response) {
     try {
        
         let userType = request.body.usertype;
+        console.log(request.body);
         //  only admin can call this api;  get admin username and pwd from request header
         getUsernamePassword(request)
             .then(request => {
@@ -370,7 +405,7 @@ console.log(userid);
                 org1.enrollUser(userid, request.password,userType).
                     then((result) => {
                         if (result == true) {
-                            submitTx(request, 'registerUser', JSON.stringify(request.body))
+                            submitTx(request, 'registerDoctor', JSON.stringify(request.body))
                             .then((result2) => {
                                 console.log('\n registered user successfully');
                                let result3='true';

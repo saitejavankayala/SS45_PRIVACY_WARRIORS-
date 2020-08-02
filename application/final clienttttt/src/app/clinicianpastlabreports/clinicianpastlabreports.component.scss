@@ -1,0 +1,501 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css');
+
+$color: #404040;
+$color-d: darken($color, 5%);
+$color-l: lighten($color, 7.5%);
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:before, *:after {
+  content: '';
+  display: block;
+  position: absolute;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font: 15px/1 'Open Sans', sans-serif;
+  color: #777;
+}
+
+a {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+.wrapper {
+  display: flex;
+  min-height: 100%;
+}
+
+nav {
+  width: 200px;
+  background: $color;
+}
+
+nav header {
+  position: relative;
+  height: 80px;
+  padding: 20px 0 0 15px;
+  font-size: 16px;
+  color: #fff;
+  background: $color-d;
+}
+
+nav header span {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  margin: 0 10px 0 0;
+  vertical-align: middle;
+  border: 1px solid #fff;
+}
+
+nav header span:before {
+  content: '\f007';
+  font: normal 20px fontawesome;
+  top: 7px;
+  left: 9px;
+}
+
+nav header a:before {
+  content: '\f08b';
+  font: normal 20px fontawesome;
+  top: 28px;
+  right: 15px;
+}
+
+nav ul span {
+  display: block;
+  padding: 15px;
+  color: rgba(255,255,255,.5);
+  text-transform: uppercase;
+  border-bottom: 1px solid $color-d;
+}
+
+nav ul a {
+  position: relative;
+  display: block;
+  padding: 15px 15px 17px 50px;
+  color: #fff;
+  border-bottom: 1px solid $color-d;
+}
+
+nav ul a:hover,
+nav ul a.active {
+  background: $color-l;
+}
+
+nav ul a:before {
+  font: normal 16px fontawesome;
+  top: 15px;
+  left: 18px;
+}
+
+nav ul li:nth-child(2) a:before { content: '\f00a'; }
+nav ul li:nth-child(3) a:before { content: '\f012'; }
+nav ul li:nth-child(4) a:before { content: '\f018'; }
+nav ul li:nth-child(5) a:before { content: '\f024'; }
+nav ul li:nth-child(6) a:before { content: '\f0c3'; }
+nav ul li:nth-child(7) a:before { content: '\f09b'; }
+nav ul li:nth-child(8) a:before { content: '\f0fa'; }
+nav ul li:nth-child(10) a:before { content: '\f002'; }
+nav ul li:nth-child(11) a:before { content: '\f085'; }
+nav ul li:nth-child(12) a:before { content: '\f08b'; }
+
+main {
+  flex: 1;
+  padding: 25px;
+  background: #f5f5f5;
+}
+
+main h1 {
+  height: 80px;
+  margin: -25px -25px 25px -25px;
+  padding: 0 25px;
+  line-height: 76px;
+  font-size: 24px;
+  font-weight: 400;
+  background: #ddd;
+}
+
+.flex-grid {
+  display: flex;
+}
+
+.flex-grid > div {
+  flex: 1;
+  margin: 0 20px 20px 0;
+  padding: 15px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.flex-grid > div:last-child {
+  margin-right: 0;
+}
+
+.flex-grid h2 {
+  margin: -15px -15px 15px -15px;
+  padding: 12px 15px;
+  font-size: 14px;
+  font-weight: 400;
+  border-bottom: 1px solid #ddd;
+}
+
+.flex-grid li {
+  position: relative;
+  margin: 0 0 10px;
+  padding: 0 0 0 25px;
+}
+
+.flex-grid li:before {
+  content: '\f00c';
+  font: normal 16px fontawesome;
+  top: 0;
+  left: 0;
+  color: #999;
+}
+
+/*
+** Media Queries
+***********************************************************/
+
+@media (max-width: 1000px) { 
+
+  .flex-grid {
+    flex-direction: column;
+  }
+
+  .flex-grid > div {
+    margin-right: 0;
+  }
+
+}
+
+
+
+
+body {
+  font-family: tahoma;
+  height: 100vh;
+  background-image: url(https://picsum.photos/g/3000/2000);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+
+.our-team {
+  padding: 30px 0 40px;
+  margin-bottom: 30px;
+  background-color: #f7f5ec;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.our-team .picture {
+  display: inline-block;
+  height: 130px;
+  width: 130px;
+  margin-bottom: 50px;
+  z-index: 1;
+  position: relative;
+}
+
+.our-team .picture::before {
+  content: "";
+  width: 100%;
+  height: 0;
+  border-radius: 50%;
+  background-color: #1369ce;
+  position: absolute;
+  bottom: 135%;
+  right: 0;
+  left: 0;
+  opacity: 0.9;
+  transform: scale(3);
+  transition: all 0.3s linear 0s;
+}
+
+.our-team:hover .picture::before {
+  height: 100%;
+}
+
+.our-team .picture::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #1369ce;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.our-team .picture img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  transform: scale(1);
+  transition: all 0.9s ease 0s;
+}
+
+.our-team:hover .picture img {
+  box-shadow: 0 0 0 14px #f7f5ec;
+  transform: scale(0.7);
+}
+
+.our-team .title {
+  display: block;
+  font-size: 15px;
+  color: #4e5052;
+  text-transform: capitalize;
+}
+
+.our-team .social {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #1369ce;
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  transition: all 0.5s ease 0s;
+}
+
+.our-team:hover .social {
+  bottom: 0;
+}
+
+.our-team .social li {
+  display: inline-block;
+}
+
+.our-team .social li a {
+  display: block;
+  padding: 10px;
+  font-size: 17px;
+  color: white;
+  transition: all 0.3s ease 0s;
+  text-decoration: none;
+}
+
+.our-team .social li a:hover {
+  color: #1369ce;
+  background-color: #f7f5ec;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url("https://healthcorp.com.au/public/wp-content/uploads/2015/10/bg-grey-shapes.png");
+    background-size: cover;
+    font-family: 'Roboto Slab', serif;
+}
+
+#tema {
+    background: orange;
+    text-align: left;
+    padding: 10px 5px;
+    text-align: center;
+    position: fixed;
+    top: 25px;
+    left: 5px;
+    font-size: 15px;
+    border-radius: .5%;
+}
+
+audio {
+    background: orange;
+    height: 50px;
+    width: 100%;
+}
+
+header img {
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+}
+
+#container {
+    background: #FFF;
+    width: 70%;
+    margin: 25px auto;
+    border: 1px solid;
+    border-radius: .5%;
+}
+
+header {
+    background: #9645c1;
+    text-align: center;
+    padding: 1%;
+    color: white;
+}
+
+form {
+    margin: 5%;
+    width: 70%;
+}
+
+fieldset {
+    border: 0px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+#country,
+input[type="email"],
+input[type="password"],
+textarea {
+    border: 1px solid #9645c1;
+    display: block;
+    margin: 10px auto;
+    padding: 2%;
+    width: 100%;
+}
+
+input[type="radio"] {
+    margin-top: 1.5%;
+}
+
+#submitButton {
+    background: #c1beba;
+    padding: 15px 10px;
+    float: left;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+#submitButton:hover {
+    filter: brightness(115%);
+}
+
+#resetButton {
+    background: #e24f2b;
+    padding: 15px 10px;
+    color: white;
+    float: right;
+    cursor: pointer;
+}
+
+#resetButton:hover {
+    filter: brightness(115%);
+}
+
+#part-1 label:after {
+    content: " *";
+    color: red;
+}
+
+#part-2 label:after {
+    content: " *";
+    color: red;
+}
+
+textarea {
+    resize: none;
+}
+
+/*Media Query */
+
+@media all and (min-width: 0px) and (max-width: 320px) {
+    h1 {
+        font-size: 22px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    #container {
+        width: 90%;
+        margin-top: 20%;
+    }
+    #tema {
+        width: 100%;
+        left: .5px;
+        top: 0;
+    }
+    #resetButton {
+        float: left;
+    }
+}
+
+@media all and (min-width: 321px) and (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    #container {
+        width: 90%;
+        margin-top: 13%;
+    }
+    #tema {
+        width: 100%;
+        left: .5px;
+        top: 0;
+    }
+    #resetButton {
+        float: left;
+    }
+}
+
+@media all and (min-width: 481px) and (max-width: 568px) {
+    h1 {
+        font-size: 22px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    #container {
+        width: 90%;
+        margin-top: 10%;
+    }
+    #tema {
+        width: 100%;
+        left: .5px;
+        top: 0;
+    }
+}
+
+@media all and (min-width: 569px) and (max-width: 768px) {
+    h1 {
+        font-size: 22px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    #container {
+        width: 90%;
+        margin-top: 7%;
+    }
+    #tema {
+        width: 100%;
+        left: .5px;
+        top: 0;
+    }
+}

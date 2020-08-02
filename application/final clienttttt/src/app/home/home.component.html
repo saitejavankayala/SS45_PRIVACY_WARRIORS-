@@ -1,0 +1,629 @@
+
+   
+   
+   <head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+
+   
+   <!--<mat-toolbar color="primary" class="app-header" style="width:100%;" *ngIf="nav.visible">
+	  <div>
+		<img src="./assets/MHRD.png" style="align-content: left;max-width: 60px;">
+	  
+	   </div>
+	   <form>
+		<input type="search" placeholder="Search">
+	  </form>
+	  <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+			<mat-icon>menu</mat-icon>
+		  </button>
+		  
+	  
+	<div>
+	  <span class="nav-tool-items">
+		<a href="#" mat-button [routerLink]="['/home']" routerLinkActive="active">
+			  <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+			  Home
+			</a>
+			<a href="#" mat-button [routerLink]="['/aboutus']" routerLinkActive="active">
+			  <mat-icon>message</mat-icon>
+			  About
+			</a>
+		   
+			<a href="#" mat-button >
+			  <mat-icon>account_box</mat-icon>
+			  Hospitals
+			</a>
+			<a href="#" mat-button [routerLink]="['/resource']" routerLinkActive="active">
+			  <mat-icon>account_box</mat-icon>
+			  Resources
+			</a>
+			
+		   
+			
+			<a href="#" mat-button [routerLink]="['/login']" routerLinkActive="active">
+			  <mat-icon>account_box</mat-icon>
+			  Login
+			</a>
+			<button  mat-raised-button color="accent" mat-button [matMenuTriggerFor]="menu"><mat-icon>lock</mat-icon>Signup</button>
+	<mat-menu #menu="matMenu">
+	  <a  mat-menu-item [routerLink]="['/register']" routerLinkActive="active">Register as Patient</a>
+	  <a  mat-menu-item [routerLink]="['/registerh']" routerLinkActive="active">Register as Hospital</a>
+	  <a  mat-menu-item [routerLink]="['/registerd']" routerLinkActive="active">Register as Doctor</a>
+	</mat-menu>
+	
+	
+			 
+		   
+	<mat-sidenav-container fxFlexFill >
+		<mat-sidenav #sidenav>
+		  <mat-nav-list>
+			<a href="#" mat-list-item [routerLink]="['/home']" routerLinkActive="active">
+			  <mat-icon>notifications</mat-icon>
+			  Home
+			</a>
+			<a href="#" mat-list-item>
+			  <mat-icon>message</mat-icon>
+			  About</a>
+			<a href="#" mat-list-item>
+			  <mat-icon>account_box</mat-icon>
+			  Hospitals
+			</a>
+			<a href="#" mat-list-item>
+			  <mat-icon>lock</mat-icon>
+			  Resources
+			</a>
+			<a href="#" mat-button [routerLink]="['/login']" routerLinkActive="active">
+			  <mat-icon>account_box</mat-icon>
+			  Login
+			</a>
+			<br>
+		   <button  mat-raised-button color="accent"  mat-button [matMenuTriggerFor]="menu"><mat-icon>lock</mat-icon>Signup</button>
+		   
+			<img src="./assets/mhrd.jpeg">
+		  
+		   
+	<mat-menu #menu="matMenu">
+	  <a mat-menu-item [routerLink]="['/register']" routerLinkActive="active">Register as Patient</a>
+	  <a  mat-menu-item [routerLink]="['/registerh']" routerLinkActive="active">Register as Hospital</a>
+	  <a  mat-menu-item [routerLink]="['/registerd']" routerLinkActive="active">Register as Doctor</a>
+	  <a mat-menu-item [routerLink]="['/researcher']" routerLinkActive="active">Register as Researcher</a>
+	  <a  mat-menu-item [routerLink]="['/admin']" routerLinkActive="active">Register as Admi</a>
+	  <a  mat-menu-item [routerLink]="['/clinician']" routerLinkActive="active">Register as clinician</a>
+	</mat-menu>
+	
+			
+			<a (click)="sidenav.toggle()" mat-list-item>
+			  <mat-icon>close</mat-icon> Close
+			</a>
+		  </mat-nav-list>
+		</mat-sidenav>
+		<mat-sidenav-content fxFlexFill></mat-sidenav-content>
+	  </mat-sidenav-container>
+	</span>
+	</div>
+	
+	</mat-toolbar>-->
+   
+	
+	
+	
+  
+
+   
+   
+   
+   <!--<mat-toolbar color="primary" class="app-header" style="width:100%;" *ngIf="nav.visible">
+	  <div>
+		<img src="./assets/MHRD.png" style="align-content: left;max-width: 60px;">
+	  
+	   </div>
+	   <form>
+		<input type="search" placeholder="Search">
+	  </form>
+	  <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+			<mat-icon>menu</mat-icon>
+		  </button>
+		  
+	  
+	<div>
+	  <span class="nav-tool-items">
+		<a href="#" mat-button [routerLink]="['/home']" routerLinkActive="active">
+			  <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+			  Home
+			</a>
+			<a href="#" mat-button [routerLink]="['/aboutus']" routerLinkActive="active">
+			  <mat-icon>message</mat-icon>
+			  About
+			</a>
+		   
+			<a href="#" mat-button >
+			  <mat-icon>account_box</mat-icon>
+			  Hospitals
+			</a>
+			<a href="#" mat-button [routerLink]="['/resource']" routerLinkActive="active">
+			  <mat-icon>account_box</mat-icon>
+			  Resources
+			</a>
+			
+		   
+			
+			<a href="#" mat-button [routerLink]="['/login']" routerLinkActive="active">
+			  <mat-icon>account_box</mat-icon>
+			  Login
+			</a>
+			<button  mat-raised-button color="accent" mat-button [matMenuTriggerFor]="menu"><mat-icon>lock</mat-icon>Signup</button>
+	<mat-menu #menu="matMenu">
+	  <a  mat-menu-item [routerLink]="['/register']" routerLinkActive="active">Register as Patient</a>
+	  <a  mat-menu-item [routerLink]="['/registerh']" routerLinkActive="active">Register as Hospital</a>
+	  <a  mat-menu-item [routerLink]="['/registerd']" routerLinkActive="active">Register as Doctor</a>
+	</mat-menu>
+	
+	
+			 
+		   
+	<mat-sidenav-container fxFlexFill >
+		<mat-sidenav #sidenav>
+		  <mat-nav-list>
+			<a href="#" mat-list-item [routerLink]="['/home']" routerLinkActive="active">
+			  <mat-icon>notifications</mat-icon>
+			  Home
+			</a>
+			<a href="#" mat-list-item>
+			  <mat-icon>message</mat-icon>
+			  About</a>
+			<a href="#" mat-list-item>
+			  <mat-icon>account_box</mat-icon>
+			  Hospitals
+			</a>
+			<a href="#" mat-list-item>
+			  <mat-icon>lock</mat-icon>
+			  Resources
+			</a>
+			<a href="#" mat-button [routerLink]="['/login']" routerLinkActive="active">
+			  <mat-icon>account_box</mat-icon>
+			  Login
+			</a>
+			<br>
+		   <button  mat-raised-button color="accent"  mat-button [matMenuTriggerFor]="menu"><mat-icon>lock</mat-icon>Signup</button>
+		   
+			<img src="./assets/mhrd.jpeg">
+		  
+		   
+	<mat-menu #menu="matMenu">
+	  <a mat-menu-item [routerLink]="['/register']" routerLinkActive="active">Register as Patient</a>
+	  <a  mat-menu-item [routerLink]="['/registerh']" routerLinkActive="active">Register as Hospital</a>
+	  <a  mat-menu-item [routerLink]="['/registerd']" routerLinkActive="active">Register as Doctor</a>
+	  <a mat-menu-item [routerLink]="['/researcher']" routerLinkActive="active">Register as Researcher</a>
+	  <a  mat-menu-item [routerLink]="['/admin']" routerLinkActive="active">Register as Admi</a>
+	  <a  mat-menu-item [routerLink]="['/clinician']" routerLinkActive="active">Register as clinician</a>
+	</mat-menu>
+	
+			
+			<a (click)="sidenav.toggle()" mat-list-item>
+			  <mat-icon>close</mat-icon> Close
+			</a>
+		  </mat-nav-list>
+		</mat-sidenav>
+		<mat-sidenav-content fxFlexFill></mat-sidenav-content>
+	  </mat-sidenav-container>
+	</span>
+	</div>
+	
+	</mat-toolbar>-->
+   
+	
+	
+	
+  
+	<router-outlet></router-outlet>
+	<!--<app-carousel [autoPlayDuration]="5000" animation="slide" [isNavigationVisible]="true" [isThumbnailsVisible]="true" [slides]="slides"
+	 [slideTemplateRef]="slide" [thumbnailTemplateRef]="thumbnail"></app-carousel>
+	<ng-template #slide let-slide>
+	  <div [ngStyle]="{
+		  'background-size': 'cover',
+		  'background-image': 'url(' + slide.url + ')',
+		  'background-repeat': 'no-repeat',
+		  'width': '100%',
+		  'height': '100%'
+		}">
+	  </div>
+	</ng-template>
+	<ng-template #thumbnail let-slide>
+		<div [ngStyle]="{
+			'background-size': 'cover',
+			'background-image': 'url(' + slide.url + ')',
+			'background-repeat': 'no-repeat',
+			'background-position': 'center center',
+			'width': '100%',
+			'height': '100%'
+		  }"></div>
+	</ng-template>-->
+	
+	
+	
+	
+	
+	<div class="separator" style="width:100%;z-index: 1;">
+		<img src="assets/8.jpg" style="width: 100%;height: auto;"/>
+		<img src="assets/pvw6.jpeg" style="width: 15%;border-radius: 54%;position: relative;top: -680px;margin-left: -5px;padding-right: 20px;"/>
+		<img src="assets/g7.jpeg" style="width: 15%;border-radius: 55%;position: relative;top: -680px;margin-left: 575px;"/>
+		<p style="font-size:60px;display:inline;color:chartreuse;border-radius: 50%;position: relative;top: -550px;margin-left: 158px;padding-right: 140px;">Training Tomorrow's Engineers Today</p>
+		
+	  </div>
+	  <br>
+	
+	<!-- Load font awesome icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<!-- The social media icon bar -->
+	<div class="icon-bar" style="z-index: 2;">
+	  <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+	  <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+	  <a href="#" class="google"><i class="fab fa-google"></i></a>
+	  <a href="#" class="linkedin"><i class="fab fa-linkedin"></i></a>
+	  <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+	</div>
+	
+	
+	
+	
+	
+	<div class="container" style="border: 2px;z-index: 2;margin-top: -240px;">
+	
+	  
+		<!--  image left  -->
+		<div class="row">
+		  <div class="col-md-6">
+	  
+			<img src="./assets/trvsehr.jpg" alt="" class="w-100" />
+		  </div>
+		  <!-- /.col-md-6 -->
+		  <div class="col-md-6">
+	  
+			<div class="row align-items-center h-100">
+			  <div class="col">
+				<h1 class="display-3"  style="font-size: 35px;font-weight: bolder;">Traditional vs EHR</h1>
+				<p class="lead"  style="text-align: justify;font-size: 18px;">There are many differences between electronic health records (EHR) and traditional paper-based medical records – probably more than you would expect. The benefits of an EHR are numerous when you compare physicians’ time and finances, the health benefits for patients and the impact to the environment. This infographic from Quest Diagnostics Care 360 compares both record-keeping systems and presents the advantages of adopting a certified EHR system. 
+				  <br /><br />
+				  <a href="https://www.healthit.gov/faq/what-electronic-health-record-ehr" class="">Clickhere for more info</a>
+				</p>
+	  
+			  </div>
+			</div>
+	  
+		  </div>
+		  <!-- /.col-md-6 -->
+	  
+		</div>
+		<!-- /.row -->
+	  
+		<!--  image right  -->
+		<div class="row">
+		  <div class="col-md-6 order-md-6">
+	  
+			<img src="./assets/secure.png" alt="" class="w-100" style="height: 500px;" />
+		  </div>
+		  <!-- /.col-md-6 -->
+		  <div class="col-md-6 order-md-1">
+	  
+			<div class="row align-items-center h-100">
+			  <div class="col">
+				<h1 class="display-3"  style="font-size: 35px;font-weight: bolder;">Securing EHR Documents</h1>
+				<p class="lead"  style="text-align: justify;font-size: 18px;">Blockchain have been an interesting research area for a long time and the benefits it provides have been used by a number of various industries. Similarly, the healthcare sector stands to benefit immensely from the blockchain technology due to security, privacy, confidentiality and decentralization. Nevertheless, the Electronic Health Record (EHR) systems face problems regarding data security, integrity and management. In this paper, we discuss how the blockchain technology can be used to transform the EHR systems and could be a solution of these issues. We present a framework that could be used for the implementation of blockchain technology in healthcare sector for EHR. The aim of our proposed framework is firstly to implement blockchain technology for EHR and secondly to provide secure storage of electronic records by defining granular access rules for the users of the proposed framework. Moreover, this framework also discusses the scalability problem faced by the blockchain technology in general via use of off-chain storage of the records. This framework provides the EHR system with the benefits of having a scalable, secure and integral blockchain-based solution.
+				  <br /><br />
+				  <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=8717579" class="">Clickhere for more info</a>
+				</p>
+	  
+			  </div>
+			</div>
+	  
+		  </div>
+		  <!-- /.col-md-6 -->
+	  
+		</div>
+		<!-- /.row -->
+	  
+	  </div>
+	
+	
+	
+	  
+	
+	
+	  <div class="content-boxs" style="z-index: -1;border: 2px;margin-top: 0px;">
+		<a href="#" class="content-box">
+			<div class="background"></div>
+			<div class="foreground">
+				<div class="content-icon">
+					<i class="fa fa-area-chart" aria-hidden="true"></i>
+				</div>
+				<div class="content-info">
+					<h4 class="content-title">What is EHR?</h4>
+					<div class="content-desc">
+						An electronic (digital) collection of medical information about a person that is stored on a computer. An electronic health record includes information about a patient's health history, such as diagnoses, medicines, tests, allergies, immunizations, and treatment plans.
+					</div>
+					<a href="https://www.healthit.gov/faq/what-electronic-health-record-ehr"><div class="content-btn">Clickhere for more info</div></a>
+				</div>
+			</div>
+		</a>
+	
+		<a href="#" class="content-box">
+			<div class="background"></div>
+			<div class="foreground">
+				<div class="content-icon">
+					<i class="fa fa-area-chart" aria-hidden="true"></i>
+				</div>
+				<div class="content-info">
+					<h4 class="content-title">What is BlockChain?</h4>
+					<div class="content-desc">
+						Blockchain is the technology the underpins digital currency (Bitcoin, Litecoin, Ethereum, and the like). The tech allows digital information to be distributed, but not copied. ... The information is constantly reconciled into the database, which is stored in multiple locations and updated instantly.
+					</div>
+					<a href="https://builtin.com/blockchain"><div class="content-btn">Clickhere for more info</div></a>
+				</div>
+			</div>
+		</a>
+	   
+	</div>
+	
+	
+	
+	<script>
+		 $(document).ready(function($) {
+			$('.count-number').counterUp({
+				delay: 10,
+				time: 1000
+			});
+	 });
+	</script>
+	
+	
+	
+	<section id="statistic" class="statistic-section one-page-section">
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-xs-12 col-md-3">
+					<div class="counter">
+						<i class="fa fa-coffee fa-2x stats-icon"></i>
+						<h2 class="timer count-title count-number">1,000</h2>
+						<div class="stats-line-black"></div>
+						<p class="stats-text"></p>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<div class="counter">
+						<i class="fa fa-code fa-2x stats-icon"></i>
+						<h2 class="timer count-title count-number">24,000
+						</h2>
+						<div class="stats-line-black"></div>
+						<p class="stats-text"></p>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<div class="counter">
+						<i class="fa fa-clock-o fa-2x stats-icon"></i>
+						<h2 class="timer count-title count-number">1,440,000</h2>
+						<div class="stats-line-black"></div>
+						<p class="stats-text"></p>
+					</div>
+				</div>
+				<div class="col-xs-12 col-md-3">
+					<div class="counter">
+						<i class="fa fa-laptop fa-2x stats-icon"></i>
+						<h2 class="timer count-title count-number">86,400,000</h2>
+						<div class="stats-line-black"></div>
+						<p class="stats-text"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+		<main class='main'>
+	
+			<section class='left section'>
+		  
+			  <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the gre</p>
+		  
+			</section>
+			<section class='right section'>
+		  
+			  <video src='/assets/sih.mp4' controls></video>
+		  
+			</section>
+		  
+		  </main>
+	
+	
+	
+		<div style="background-color: blue;">
+	
+			<div class="container">
+		
+				<h1 class="brand"><span style="margin-left: 400px;">CONTACT US</span></h1>
+			
+				<div class="wrapper">
+			
+					<!-- COMPANY INFORMATION -->
+					<div class="company-info">
+						<h3 style="margin-left: 80px;">Contactus</h3>
+			
+						<ul>
+							<li><i class="fas fa-map-marker-alt" style="font-size:20px;color:red;margin-left: 120px;"></i><br><p style="margin-left: 100px;">Rajam(Dolapeta)<br>532127</p></li>
+							<li style="margin-left: 20px;"><i class="fa fa-phone" style="font-size:20px;color:red;margin-left: -5px;padding-right: 80px;"></i> <p style="margin-left: 80px;">9182661299<br>6300418621</p></li>
+							<li><i class="fa fa fa-envelope" style="color: red;padding-right: 70px;"></i><p style="margin-left: 100px;">17341ao5h1@gmrit.edu.in<br>17341ao5e9@gmrit.edu.in</p></li>
+						</ul>
+					</div>
+					<!-- End .company-info -->
+			
+					<!-- CONTACT FORM -->
+					<div class="contact">
+						<h3>E-mail Us</h3>
+			
+						<form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+							<div>
+								<label>Name</label>
+								<input type="text" name="name" id="name" class="form-control" [(ngModel)]="model.name" #name="ngModel" required >
+								<div *ngIf="f.submitted && !name.valid" class="help-block">Name is required</div>
+							
+							</div>
+					
+							<div>
+								<label>E-mail Address</label>
+								<input type="text" name="company" id="company" class="form-control" [(ngModel)]="model.company" #company="ngModel" required>
+								<div *ngIf="f.submitted && !company.valid" class="help-block">E-mail address is required</div>
+							
+							</div>
+							<div>
+							
+								<label>Phone Number</label>
+								<input type="text" name="phone" id="phone" class="form-control" [(ngModel)]="model.phone" #phone="ngModel" required>
+								<div *ngIf="f.submitted && !phone.valid" class="help-block">Phone no is required</div>
+							
+							</div>
+							<div>
+							
+								<label>Subject</label>
+								<input type="email" name="email" id="email" class="form-control" [(ngModel)]="model.email" #email="ngModel" required>
+								<div *ngIf="f.submitted && !email.valid" class="help-block">subject is required</div>
+							
+							</div>
+						
+			
+							<div>
+								<label>Message</label>
+								<textarea name="message" rows="5" id="message" class="form-control" [(ngModel)]="model.message" #message="ngModel" required></textarea>
+								<div *ngIf="f.submitted && !message.valid" class="help-block">Message is required</div>
+							</div>
+			<div>
+								<button type="submit" style="margin-top: 80px;">Submit</button></div>
+				
+			
+						</form>
+						<!-- End #contact-form -->
+					</div>
+					<!-- End .contact -->
+			
+				</div>
+				<!-- End .wrapper -->
+			</div>
+			<!-- End .container -->
+		
+		
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			
+	
+	
+	
+	
+	
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!------ Include the above in your HEAD tag ---------->
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	
+	
+	
+	<!--footer starts from here-->
+	<footer class="footer">
+	<div class="container bottom_border">
+	<div class="row">
+	<div class=" col-sm-4 col-md col-sm-4  col-12 col">
+	<h5 class="headin5_amrc col_white_amrc pt2" style="margin-left: 100px;">Find us</h5>
+	<!--headin5_amrc-->
+	<p class="mb10"></p>
+	<i class="fas fa-map-marker-alt" style="font-size:20px;color:red;margin-left: 120px;"></i><br><p style="margin-left: 100px;">Rajam(Dolapeta)<br>532127</p>
+	<i class="fa fa-phone" style="font-size:20px;color:red;margin-left: 5px;"></i> <p style="margin-left: 100px;">9182661299<br>6300418621</p>
+	<i class="fa fa fa-envelope" style="color: red;"></i><p style="margin-left: 100px;">17341ao5h1@gmrit.edu.in<br>17341ao5e9@gmrit.edu.in</p>
+	
+
+	</div>
+	
+	
+	<div class=" col-sm-4 col-md  col-6 col">
+	<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+	<!--headin5_amrc-->
+	<ul class="footer_ul_amrc">
+	<li><a href="http://webenlance.com">Home</a></li>
+	<li><a href="http://webenlance.com">Aboutus</a></li>
+	<li><a href="http://webenlance.com">Hospitals</a></li>
+	<li><a href="http://webenlance.com">Resources</a></li>
+	
+	</ul>
+	<!--footer_ul_amrc ends here-->
+	</div>
+	
+	
+	<div class=" col-sm-4 col-md  col-6 col">
+	<h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+	<!--headin5_amrc-->
+	<ul class="footer_ul_amrc">
+	<li><a href="http://webenlance.com">Home</a></li>
+	<li><a href="http://webenlance.com">Abotus</a></li>
+	
+	<li><a href="http://webenlance.com">Hospitals</a></li>
+	<li><a href="http://webenlance.com">Resources</a></li>
+	
+	</ul>
+	<!--footer_ul_amrc ends here-->
+	</div>
+	
+	
+	<div class=" col-sm-4 col-md  col-12 col">
+	<h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
+	<!--headin5_amrc ends here-->
+	
+	<ul class="footer_ul2_amrc">
+	<li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a><p><a href="#">https://twitter.com/SaitejaVankaya5/status/1286292192701501440?s=20</a></p></li>
+	<li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a><p><a href="#">https://www.lipsum.com/</a></p></li>
+	<li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a><p><a href="#">https://www.lipsum.com/</a></p></li>
+	</ul>
+	<!--footer_ul2_amrc ends here-->
+	</div>
+	</div>
+	</div>
+	
+	
+	<div class="container">
+	<ul class="foote_bottom_ul_amrc">
+	<li><a href="http://webenlance.com">Home</a></li>
+	<li><a href="http://webenlance.com">Aboutus</a></li>
+	<li><a href="http://webenlance.com">Hospitals</a></li>
+	<li><a href="http://webenlance.com">Resources</a></li>
+	<li><a href="http://webenlance.com">Blog</a></li>
+	
+	</ul>
+	<!--foote_bottom_ul_amrc ends here-->
+	<p class="text-center">sih@2020 | Designed With by <a href="#">PRIVACY_WARRIORS</a></p>
+	
+	<div class="rounded-social-buttons">
+		<a class="social-button facebook" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+		<a class="social-button twitter" href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+		<a class="social-button linkedin" href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+		<a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+		<a class="social-button instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+	</div>
+	<!--social_footer_ul ends here-->
+	</div>
+	
+	</footer>
+	
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	

@@ -1,0 +1,114 @@
+<div class="wrapper">
+
+  <nav>
+
+    <header>
+      <span></span>
+      John Doe
+      <a></a>
+    </header>
+
+    <ul>
+      <li><span>Navigation</span></li>
+      <li><a  routerLink="/hospitaldashboard" routerLinkActive="active" class="active">Dashboard</a></li>
+      <li><a routerLink="/hospitalprofile" routerLinkActive="active">Userprofile</a></li>
+      <li><a routerLink="/hospitaldoctor" routerLinkActive="active">Doctor</a></li>
+      <li><a routerLink="/hospitalnurse" routerLinkActive="active">Nurse</a></li>
+      <li><a routerLink="/hospitalradiologist" routerLinkActive="active">Radiologist</a></li>
+      
+      <button  mat-raised-button color="accent" mat-button [matMenuTriggerFor]="menu" style="margin-left: 50px;width: 45px;;"><mat-icon>lock</mat-icon>Register</button>
+      <mat-menu #menu="matMenu">
+      <a  mat-menu-item [routerLink]="['/doctorregister']" routerLinkActive="active">Register for doctor</a>
+      <a  mat-menu-item [routerLink]="['/nurseregister']" routerLinkActive="active">Register for nurse</a>
+      <a  mat-menu-item [routerLink]="['/radiologistregister']" routerLinkActive="active">Register for radiologist</a>
+      <!--<a mat-menu-item [routerLink]="['/researcherregister']" routerLinkActive="active">Register for Researcher</a>-->
+    
+      <a  mat-menu-item [routerLink]="['/clinicianregister']" routerLinkActive="active">Register for clinician</a>
+      </mat-menu>
+      <li><a href="#">Logout</a></li>
+    </ul>
+
+  </nav>
+  <div class="pagecontent" style="background-color: darkslategray;">
+  <div class="cards-list" >
+
+
+
+  
+    <div class="card 1">
+      <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+      <div class="card_title title-white">
+        <p>No of doctors register</p>
+        <p>{{alldoctors}}</p>
+      </div>
+    </div>
+
+
+
+    
+      <div class="card 2">
+      <div class="card_image">
+        <img src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg" />
+        </div>
+      <div class="card_title title-white">
+        <p>No of patients register</p>
+        <p>50</p>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    
+    <div class="card 3">
+      <div class="card_image">
+        <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
+      </div>
+      <div class="card_title">
+        <p>No of Radiologists</p>
+        <p>60</p>
+      </div>
+    </div>
+      
+
+
+
+
+      <div class="card 4">
+      <div class="card_image">
+        <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
+        </div>
+      <div class="card_title title-black">
+        <p>No of Labs</p>
+        <p>50</p>
+      </div>
+      </div>
+    
+  
+    <div class="card 1">
+      <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+      <div class="card_title title-white">
+        <p>No of clinicians</p>
+        <p>{{allclinicians}}</p>
+      </div>
+    </div>
+    
+      <div class="card 2">
+      <div class="card_image">
+        <img src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg" />
+        </div>
+      <div class="card_title title-white">
+        <p>Card Title</p>
+        <p>Card Title</p>
+      </div>
+    </div>
+    
+    
+    
+  </div>
+  
+</div>
+<router-outlet></router-outlet>

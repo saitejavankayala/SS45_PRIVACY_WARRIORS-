@@ -1,10 +1,8 @@
 'use strict';
 const State = require('../ledger-api/state.js');
 const ehrState = {
-    EHR_CREATED: 1,       // patient
     EHR_VIEW: 2,          // pharmacist
-    EHR_UPDATED: 3,     // doctor,
-    
+    EHR_CREATED:1,
     EHR_CLOSED: 4    // Not currently used
 };
 const AppointmentState= {
@@ -52,7 +50,10 @@ class EHRState extends State {
        setStateToEHRView() {
            this.currentEHRState = ehrState.EHR_VIEW;
        }
-   
+       setStateToEHRCLOSED() {
+        this.currentEHRState = ehrState.EHR_CLOSED;
+    }
+
        setStateToEHRUpdated() {
            this.currentEHRState = ehrState.EHR_UPDATED;
        }

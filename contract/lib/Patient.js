@@ -58,6 +58,26 @@ async init(ctx) {
 
 */
 
+async registerDoctor(ctx,args)
+{
+    const userdetails= JSON.parse(args);
+    const aadhar = userdetails.aadhar;
+    let reg =register.createInstance(aadhar);
+    reg.patientName = userdetails.name;
+    reg.patientGender=userdetails.gender;
+    reg.patientMobile = userdetails.mobile;
+    reg.patientDob = userdetails.dob;
+    reg.patientMail = userdetails.mail;
+    reg.registerdate=userdetails.todaydate;
+    reg.password=userdetails.password;
+    reg.userType=userdetails.usertype;
+    reg.specialization=userdetails.specialization;
+    reg.hospital=userdetails.hospital;
+    await ctx.stub.putState(aadhar, reg.toBuffer());
+    const event_obj = reg;
+    event_obj.event_type = "doctor registration";
+    return reg.toBuffer();
+}
 
 async registerUser(ctx,args)
 {
@@ -132,6 +152,8 @@ async requestAppointment(ctx,args)
      EHR.appointment_for=patient_details.appointment_for;
      EHR.duration=patient_details.duration;
      EHR.currentAppointmentState = AppointmentState.APPOINTMENT_REQUESTED;
+     EHR.currentEHRState=ehrState.EHR_CREATED;
+     
 
    
 
@@ -158,6 +180,56 @@ async requestAppointment(ctx,args)
     // Must return a serialized order to caller of smart contract
     return EHR.toBuffer();
 }
+
+async queryAlldata(ctx,userid) {
+    console.info('============= getPatientHIstory ===========');
+
+    let userType = await this.getCurrentUserType(ctx);
+
+    //  For adding filters in query, usage: {"selector":{"producerId":"farm1"}}
+    let queryString;
+    queryString = {
+        "selector": {
+            "aadhar":userid
+        }  //  no filter;  return all orders
+    }
+
+    // Access control done using query strings
+   
+    console.log("In queryAllAppointments: queryString = ");
+    console.log(queryString);
+    // Get all orders that meet queryString criteria
+    const iterator = await ctx.stub.getQueryResult(JSON.stringify(queryString));
+    const allAppointments = [];
+ 
+    // Iterate through them and build an array of JSON objects
+    while (true) {
+        const Appointment = await iterator.next();
+        if (Appointment.value && Appointment.value.value.toString()) {
+            console.log(Appointment.value.value.toString('utf8'));
+
+            let Record;
+
+            try {
+                Record = JSON.parse(Appointment.value.value.toString('utf8'));
+            } catch (err) {
+                console.log(err);
+                Record = Appointment.value.value.toString('utf8');
+            }
+
+            // Add to array of orders
+            allAppointments.push(Record);
+        }
+
+        if (Appointment.done) {
+            console.log('end of data');
+            await iterator.close();
+            console.info(allAppointments);
+            return allAppointments;
+        }
+    }
+}
+
 
 async queryAllAppointments(ctx,userid) {
     console.info('============= getPatientHIstory ===========');
@@ -236,6 +308,40 @@ async acceptreject(ctx, patient_uniqueId,currentAppointmentState) {
     // Must return a serialized order to caller of smart contract
     return order.toBuffer();
 }
+
+
+async accessrevoke(ctx, patient_uniqueId,currentAppointmentState) {
+    console.info('============= receiveOrder ===========');
+
+   
+    // Retrieve the current order using key provided
+    var orderAsBytes = await ctx.stub.getState(patient_uniqueId);
+  
+    // Convert order so we can modify fields
+    var order =  EHRState.deserialize(orderAsBytes);
+
+    // Access Control: This transaction should only be invoked by designated Producer
+    let userId = await this.getCurrentUserId(ctx);
+
+    
+    if(currentAppointmentState=='2'){
+       order.setStateToEHRView();  
+    }
+    else{
+        order.setStateToEHRCLOSED();
+    }
+    // Change currentOrderState
+    
+    // Track who is invoking this transaction
+    order.modifiedBy = userId;
+
+    // Update ledger
+    await ctx.stub.putState(patient_uniqueId, order.toBuffer());
+
+    // Must return a serialized order to caller of smart contract
+    return order.toBuffer();
+}
+
 async acceptAppointment(ctx,args)
 {
     let userType = await this.getCurrentUserType(ctx);

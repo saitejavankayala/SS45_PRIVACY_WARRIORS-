@@ -1,0 +1,116 @@
+<head><script src="https://www.google.com/recaptcha/api.js" async defer></script></head>
+<body style="background-image: url(assets/log.webp);">
+  <div class="form_wrapper">
+    <div class="form_container">
+      <div class="title_container">
+        <h2>LogIn Form</h2>
+      </div>
+      <div class="row clearfix">
+        <div class="">
+          <form (ngSubmit)="ffff.form.valid && login()" #ffff="ngForm" novalidate>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+              <input type="text" class="form-control" placeholder="HospitalName" name="userid" [(ngModel)]="model.userid" #userid="ngModel" required  />
+              <div *ngIf="ffff.submitted && !userid.valid" class="help-block">It should have 12 digits.<br>It should not contains any alphabet and special characters.<br>It should have white space after every 4 digits.</div>
+            </div>
+            <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+              <input type="password"  class="form-control" placeholder="Password" name="password" [(ngModel)]="model.password" #password="ngModel" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"/>
+              
+            
+              <div *ngIf="ffff.submitted && !password.valid" class="help-block">password should be:At least 8 characters in length, but no more than 32.
+                <br>atleast<br> 1       lowercase<br>1        uppercase<br>1 digit <br>1 special character</div>
+            </div>
+            <!--<div class="input_field select_option">
+              <select class="form-control" name="usertype" [(ngModel)]="model.usertype" #usertype="ngModel">
+                <option>Select user type</option>
+                <option>hospital</option>
+              </select>
+              <div class="select_arrow"></div>
+            </div>-->
+  
+            <!--<div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+              <input type="password" name="password" placeholder="Re-type Password" required />
+            </div>
+            <div class="row clearfix">
+              <div class="col_half">
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                  <input type="text" name="name" placeholder="First Name" />
+                </div>
+              </div>
+              <div class="col_half">
+                <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                  <input type="text" name="name" placeholder="Last Name" required />
+                </div>
+              </div>
+            </div>
+                <div class="input_field radio_option">
+                <input type="radio" name="radiogroup1" id="rd1">
+                <label for="rd1">Male</label>
+                <input type="radio" name="radiogroup1" id="rd2">
+                <label for="rd2">Female</label>
+                </div>
+                <div class="input_field select_option">
+                  <select>
+                    <option>Select a country</option>
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                  </select>
+                  <div class="select_arrow"></div>
+                </div>
+              <div class="input_field checkbox_option">
+                <input type="checkbox" id="cb1">
+            <label for="cb1">I agree with terms and conditions</label>
+              </div>
+              <div class="input_field checkbox_option">
+                <input type="checkbox" id="cb2">
+            <label for="cb2">I want to receive the newsletter</label>
+              </div>-->
+              
+              <div>
+                <!-- 
+                  the SITE_KEY is the sitekey from your admin console.
+                  use form control for validation
+                -->
+                <re-captcha (resolved)="resolved($event)" 
+                            formControlName="recaptchaReactive" 
+                            siteKey="6LfMT7cZAAAAANjQkoDB0AeaXDbChE2JdtOrt6QP
+                            ">  
+                </re-captcha>
+              </div>
+
+              <button mat-stroked-button routerLink="/hospitaldashboard" routerLinkActive="active"  color="accent" class="btn-block" type="submit" style="width: 100%;">Log in</button>
+              <a href="" routerLink="/hospitallogin" routerLinkActive="active" style="margin-left: 80px;" >Login as Hospital</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!--<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" >
+  
+      <mat-card class="box" style="margin-top: 48"> 
+        <mat-card-header>
+          <mat-card-title>Log in</mat-card-title>
+        </mat-card-header>
+    
+        <form  [formGroup]="service.form" class="example-form">
+          <mat-card-content>
+            <mat-form-field class="example-full-width">
+              <input formControlName="LogInId" matInput placeholder="LogInId" required="">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width">
+              <input formControlName="Password" matInput placeholder="Password" required="">
+              <mat-error *ngIf="service.form.controls['Password'].errors?.required">This field is mandatory.</mat-error>
+            <mat-error *ngIf="service.form.controls['Password'].errors?.minlength">Minimum 6 charactors (digit,lwrcase,uprcase,symbol).</mat-error>
+            </mat-form-field>
+          </mat-card-content>
+          <button mat-stroked-button [routerLink]="['/ppdashboard']" color="accent" class="btn-block" type="submit" [disabled]="service.form.invalid">Log in</button>
+          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+        </form>
+      </mat-card>
+    
+    </div>-->
+  </body>
+    <router-outlet></router-outlet>

@@ -1,0 +1,65 @@
+<div class="wrapper">
+
+    <nav>
+  
+      <header>
+        <span></span>
+        John Doe
+        <a></a>
+      </header>
+  
+      <ul>
+        <li><span>Navigation</span></li>
+        <li><a  routerLink="/patientdashboard" routerLinkActive="active" class="active">Dashboard</a></li>
+        <li><a routerLink="/user" routerLinkActive="active">Userprofile</a></li>
+        <li><a routerLink="/ehr" routerLinkActive="active">EhrLogin</a></li>
+        <li><a routerLink="/pharmacy" routerLinkActive="active">PharmacyDetails</a></li>
+        <li><a routerLink="/doctor" routerLinkActive="active">PatientMedicalHistory</a></li>
+        <li><a><button (click)="appointment()">NewAppointment</button></a></li>
+        <li><a>FAQ</a></li>
+        <li><span>Other</span></li>
+        <li><a>Search</a></li>
+        <li><a>Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+  
+    </nav>
+    <div class="container" style="margin-left: 5px;width:100%;height: 100%;margin-top:30px;">
+      <div class="row">
+       
+        
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <div class="our-team">
+            <div class="picture">
+              <img class="img-fluid" src="https://picsum.photos/130/130?image=836">
+            </div>
+            <div class="team-content">
+              <h3 class="name">Name :{{registeredusers[0].patientName}}</h3>
+              <br>
+              <br>
+              <h3 class="name">Email :{{registeredusers[0].patientMail}}</h3>
+              <br>
+              <br>
+              <h3 class="name">Age :{{registeredusers[0].patientDob}}</h3>
+              <br>
+              <br>
+              <h3 class="name">Gender : {{registeredusers[0].patientGender}}</h3>
+              <br>
+              <br>
+              <h3 class="name">mobileno :{{registeredusers[0].patientMobile}}</h3>
+              <br>
+              <br>
+            </div>
+            <ul class="social">
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-facebook" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-twitter" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-google-plus" aria-hidden="true"></a></li>
+              <li><a href="https://codepen.io/collection/XdWJOQ/" class="fa fa-linkedin" aria-hidden="true"></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+  </div>
+  <router-outlet></router-outlet>

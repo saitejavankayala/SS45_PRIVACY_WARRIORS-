@@ -1,0 +1,125 @@
+
+<script>
+  // no react or anything
+let state = {};
+
+// state management
+function updateState(newState) {
+	state = { ...state, ...newState };
+	console.log(state);
+}
+
+// event handlers
+$("input").change(function(e) {
+	let files = document.getElementsByTagName("input")[0].files;
+	let filesArr = Array.from(files);
+	updateState({ files: files, filesArr: filesArr });
+
+	renderFileList();
+});
+
+$(".files").on("click", "li > i", function(e) {
+	let key = $(this)
+		.parent()
+		.attr("key");
+	let curArr = state.filesArr;
+	curArr.splice(key, 1);
+	updateState({ filesArr: curArr });
+	renderFileList();
+});
+
+$("form").on("submit", function(e) {
+	e.preventDefault();
+	console.log(state);
+	renderFileList();
+});
+
+// render functions
+function renderFileList() {
+	let fileMap = state.filesArr.map((file, index) => {
+		let suffix = "bytes";
+		let size = file.size;
+		if (size >= 1024 && size < 1024000) {
+			suffix = "KB";
+			size = Math.round(size / 1024 * 100) / 100;
+		} else if (size >= 1024000) {
+			suffix = "MB";
+			size = Math.round(size / 1024000 * 100) / 100;
+		}
+
+		return `<li key="${index}">${
+			file.name
+		} <span class="file-size">${size} ${suffix}</span><i class="material-icons md-48">delete</i></li>`;
+	});
+	$("ul").html(fileMap);
+}
+
+</script>
+<div class="wrapper">
+
+    <nav>
+  
+      <header>
+        <span></span>
+        John Doe
+        <a></a>
+      </header>
+  
+      <ul>
+        <li><span>Navigation</span></li>
+        <li><a  routerLink="/doctordashboard" routerLinkActive="active" class="active">Dashboard</a></li>
+        <li><a routerLink="/profile" routerLinkActive="active">Userprofile</a></li>
+        <li><a routerLink="/appointmenthistory" routerLinkActive="active">appointmenthistory</a></li>
+        <li><a routerLink="/appointments" routerLinkActive="active">appointments</a></li>
+        <li><a routerLink="/" routerLinkActive="active"></a></li>
+        <li><a routerLink="/" routerLinkActive="active"></a></li>
+        <li><a>FAQ</a></li>
+        <li><span>Other</span></li>
+        <li><a>Search</a></li>
+        <li><a>Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+  
+    </nav>
+    
+
+    <!-- START FORM BODY -->
+    <div id="container">
+      <header>
+        <img src="https://auctionking.com/assets/charity/logo/YourLogoHere.png">
+        <h1>Lab Reports</h1>
+      </header>
+      
+      <form>
+        <fieldset>
+          <legend>Fields marked with * are required</legend>
+          <br/>
+
+          <!-- START DIV part-1 PERSONAL INFORMATION -->
+          <div id="part-1">
+            <h2>Personal Information (required)</h2>
+            <label for="first-name">First Name</label>
+            <input type="text" name="first-name" id="first-name" required>
+            <br/>
+            
+
+
+            <label for="files">Select files:</label>
+            <input type="file" id="files" name="files" multiple><br><br>
+
+
+            <button mat-stroked-button color="accent" class="btn-block" type="submit" style="width: 100%;">Log in</button>
+
+        </div>
+               
+           
+          
+          
+        </fieldset>
+      </form>
+    </div>
+    <!-- END FORM BODY -->
+ 
+
+  </div>
+  <router-outlet></router-outlet>

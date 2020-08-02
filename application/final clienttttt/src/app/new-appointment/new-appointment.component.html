@@ -1,0 +1,264 @@
+<div class="wrapper">
+
+  <nav>
+
+    <header>
+      <span></span>
+      John Doe
+      <a></a>
+    </header>
+
+    <ul>
+      <li><span>Navigation</span></li>
+      <li><a  routerLink="/patientdashboard" routerLinkActive="active" class="active">Dashboard</a></li>
+      <li><a routerLink="/user" routerLinkActive="active">Userprofile</a></li>
+      <li><a routerLink="/ehr" routerLinkActive="active">EhrLogin</a></li>
+      <li><a routerLink="/pharmacy" routerLinkActive="active">PharmacyDetails</a></li>
+      <li><a routerLink="/doctor" routerLinkActive="active">PatientMedicalHistory</a></li>
+      <li><a (click)="appointment()">NewAppointment</a></li>
+      <li><a>FAQ</a></li>
+      <li><span>Other</span></li>
+      <li><a>Search</a></li>
+      <li><a>Settings</a></li>
+      <li><a href="#">Logout</a></li>
+    </ul>
+
+  </nav>
+
+  <div>  <h1 style="margin-left: 220px;">Appointment Request Form</h1>
+      
+
+
+<form (ngSubmit)="newappointment()" style="margin-left:300px ;width: 2200px;">
+  <fieldset>
+    <legend><span class="number">1</span>Your basic details</legend>
+    <div class="form-group">
+    <label for="name">FullName*:</label>
+    <input type="text" class="form-control" value="{{registeredusers[0].patientName}}" name="name" [(ngModel)]="model.name" #name="ngModel" placeholder="FullName" required pattern="[a-zA-Z0-9]+" readonly>
+  </div>
+
+  <div class="form-group">
+    <label for="gender">Gender:</label>
+    <input type="text" class="form-control" value="{{registeredusers[0].patientGender}}" name="name" [(ngModel)]="model.name" #name="ngModel" placeholder="Gender" required pattern="[a-zA-Z0-9]+" readonly>
+  </div>
+
+    <div class="form-group">
+    <label for="date">DateOfBirth*:</label>
+    <input type="text" name="date" class="form-control" placeholder="DateOfBirth" value="{{registeredusers[0].patientDob}}" [(ngModel)]="model.date" #date="ngModel"value="" required readonly>
+  </div>
+
+    <div class="form-group">
+    <label for="mail">Email*:</label>
+    <input type="text" id="mail" name="mail" value="{{registeredusers[0].patientMail}}" placeholder="Email" class="form-control"  [(ngModel)]="model.mail" #mail="ngModel" placeholder="abc@gmail.com" required readonly>
+  </div>
+
+    <div class="form-group">
+    <label for="tel">Contact Num:</label>
+    <input type="text" id="tel" placeholder="contact number" value="{{registeredusers[0].patientMobile}}" name="tel" class="form-control" [(ngModel)]="model.tel" #tel="ngModel" required readonly>
+  </div>
+  
+    <div class="form-group">
+    <label for="address">Address</label>
+    <textarea  name="address" class="form-control" [(ngModel)]="model.address" #address="ngModel"></textarea>
+  </div>
+
+
+  </fieldset>
+
+  <fieldset>
+    <legend><span class="number">2</span>Appointment Details</legend>
+
+    <div class="form-group">
+    <label for="appointment_for">Appointment for*:</label>
+    <select id="appointment_for" name="appointment_for" class="form-control" [(ngModel)]="model.appointment_for" #appointment_for="ngModel" required>
+      <option value="Allergist">Allergist</option>
+      <option value="Cardiologist">Cardiologist</option>
+      <option value="Audiologist">Audiologist</option>
+      <option value="Dentist">Dentist</option>
+      <option value="Endocrinologist">Endocrinologist</option>
+      <option value="Epidemiologist.">Epidemiologist</option>
+      <option value="Anesthesiologist.">Anesthesiologist</option>
+      <option value="Best Dermatologist in Pune">Best Dermatologist in Pune</option>
+      <option value="Best Gynaecologist in Pune">Best Gynaecologist in Pune</option>
+      <option value="Medical Geneticist">Medical Geneticist</option>
+      <option value="Microbiologist">Microbiologist</option>
+      <option value="Neonatologist">Neonatologist</option>
+      <option value="Neurologist">Neurologist</option>
+      <option value="Neurosurgeon">Neurosurgeon</option>
+      <option value="ENT Specialist">ENT Specialist</option>
+      <option value="Paediatrician">Paediatrician</option>
+      <option value="Physiologist">Physiologist</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+    <label for="doctorname">Search For Doctors:</label>
+    <select id="doctorname" name="doctorname" class="form-control" [(ngModel)]="model.doctorname" #doctorname="ngModel" required>
+      <option *ngFor="let doctor of doctors; let i = index" [value]="doctors[i].id">
+        {{doctors[i].id}}
+      </option>
+    </select>
+    </div>
+
+      <div class="form-group">
+    <label for="date1">Date*:</label>
+    <input type="date" name="date1" class="form-control" [(ngModel)]="model.date1" #date1="ngModel" value="" required>
+  </div>
+    <br>
+    
+    <div class="form-group">
+    <label for="duration">How Long??(Minutes)</label>
+    <input type="radio" name="duration" value="30" class="form-control" [(ngModel)]="model.duration" #duration="ngModel" checked> 30
+    <input type="radio" name="duration" class="form-control" [(ngModel)]="model.duration" #duration="ngModel" value="60"> 60
+    <input type="radio" name="duration" class="form-control" [(ngModel)]="model.duration" #duration="ngModel" value="90"> 90
+    <input type="radio" name="duration" class="form-control" [(ngModel)]="model.duration" #duration="ngModel" value="more"> more
+  </div>
+
+  </fieldset>
+  <button type="submit">Request For Appointment</button>
+</form>
+</div>
+
+</div>
+<router-outlet></router-outlet>
+<!--<html lang="en">
+<head>
+<script type="text/javascript" src="https://github.com/rubyeffect/easy_fill/tree/master/lib/easy_fill-0.0.1.min.js"></script>
+  <title>Reach Me</title>
+  <link rel="stylesheet" type="text/css" href="new-appointment.component.css" />
+</head>
+
+
+<body>
+  
+  <div id="container">
+    
+    <div id="body_header">
+      <div class="area"></div>
+
+      <nav>
+
+        <header>
+          <span></span>
+          John Doe
+          <a></a>
+        </header>
+    
+        <ul>
+          <li><span>Navigation</span></li>
+          <li><a  routerLink="/patientdashboard" routerLinkActive="active" class="active">Dashboard</a></li>
+          <li><a routerLink="/user" routerLinkActive="active">Userprofile</a></li>
+          <li><a routerLink="/ehr" routerLinkActive="active">EhrLogin</a></li>
+          <li><a routerLink="/pharmacy" routerLinkActive="active">PharmacyDetails</a></li>
+          <li><a routerLink="/doctor" routerLinkActive="active">PatientMedicalHistory</a></li>
+          <li><a><button (click)="appointment()">NewAppointment</button></a></li>
+          <li><a>FAQ</a></li>
+          <li><span>Other</span></li>
+          <li><a>Search</a></li>
+          <li><a>Settings</a></li>
+          <li><a href="#">Logout</a></li>
+        </ul>
+    
+      </nav>
+    
+      <h1>Doctor Appointment Request Form</h1>
+      
+
+    </div>
+    <form (ngSubmit)="newappointment()">
+      <fieldset>
+        <legend><span class="number">1</span>Your basic details</legend>
+        <div class="form-group">
+        <label for="name">FullName*:</label>
+        <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" placeholder="FullName" required pattern="[a-zA-Z0-9]+">
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" class="form-control"  [(ngModel)]="model.gender" #gender="ngModel"required>
+            <option value="male">None</option>
+            <option value="male">male</option>
+            <option value="femle">female</option>
+            <option value="others">others</option>
+        </select>
+      </div>
+
+        <div class="form-group">
+        <label for="date">DateOfBirth*:</label>
+        <input type="date" name="date" class="form-control"  [(ngModel)]="model.date" #date="ngModel"value="" required>
+      </div>
+
+        <div class="form-group">
+        <label for="mail">Email*:</label>
+        <input type="email" id="mail" name="mail" class="form-control"  [(ngModel)]="model.mail" #mail="ngModel" placeholder="abc@gmail.com" required>
+      </div>
+
+        <div class="form-group">
+        <label for="tel">Contact Num:</label>
+        <input type="tel" id="tel" placeholder="contact number" name="tel" class="form-control" [(ngModel)]="model.tel" #tel="ngModel" required>
+      </div>
+      
+        <div class="form-group">
+        <label for="address">Address</label>
+        <textarea  name="address" class="form-control" [(ngModel)]="model.address" #address="ngModel"></textarea>
+      </div>
+
+
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="number">2</span>Appointment Details</legend>
+
+        <div class="form-group">
+        <label for="appointment_for">Appointment for*:</label>
+        <select id="appointment_for" name="appointment_for" class="form-control" [(ngModel)]="model.appointment_for" #appointment_for="ngModel" required>
+          <option value="Allergist">Allergist</option>
+          <option value="Cardiologist">Cardiologist</option>
+          <option value="Audiologist">Audiologist</option>
+          <option value="Dentist">Dentist</option>
+          <option value="Endocrinologist">Endocrinologist</option>
+          <option value="Epidemiologist.">Epidemiologist</option>
+          <option value="Anesthesiologist.">Anesthesiologist</option>
+          <option value="Best Dermatologist in Pune">Best Dermatologist in Pune</option>
+          <option value="Best Gynaecologist in Pune">Best Gynaecologist in Pune</option>
+          <option value="Medical Geneticist">Medical Geneticist</option>
+          <option value="Microbiologist">Microbiologist</option>
+          <option value="Neonatologist">Neonatologist</option>
+          <option value="Neurologist">Neurologist</option>
+          <option value="Neurosurgeon">Neurosurgeon</option>
+          <option value="ENT Specialist">ENT Specialist</option>
+          <option value="Paediatrician">Paediatrician</option>
+          <option value="Physiologist">Physiologist</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+        <label for="doctorname">Search For Doctors:</label>
+        <select id="doctorname" name="doctorname" class="form-control" [(ngModel)]="model.doctorname" #doctorname="ngModel" required>
+          <option *ngFor="let doctor of doctors; let i = index" [value]="doctors[i].id">
+            {{doctors[i].id}}
+          </option>
+        </select>
+        </div>
+
+          <div class="form-group">
+        <label for="date1">Date*:</label>
+        <input type="date" name="date1" class="form-control" [(ngModel)]="model.date1" #date1="ngModel" value="" required>
+      </div>
+        <br>
+        
+        <div class="form-group">
+        <label for="duration">How Long??(Minutes)</label>
+        <input type="radio" name="duration" value="30" class="form-control" [(ngModel)]="model.duration" #duration="ngModel" checked> 30
+        <input type="radio" name="duration" class="form-control" [(ngModel)]="model.duration" #duration="ngModel" value="60"> 60
+        <input type="radio" name="duration" class="form-control" [(ngModel)]="model.duration" #duration="ngModel" value="90"> 90
+        <input type="radio" name="duration" class="form-control" [(ngModel)]="model.duration" #duration="ngModel" value="more"> more
+      </div>
+
+      </fieldset>
+      <button type="submit">Request For Appointment</button>
+    </form>
+  </div>
+</body>
+
+</html>-->
