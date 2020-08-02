@@ -92,13 +92,32 @@
     </div>
 
     <div class="form-group">
-    <label for="doctorname">Search For Doctors:</label>
-    <select id="doctorname" name="doctorname" class="form-control" [(ngModel)]="model.doctorname" #doctorname="ngModel" required>
-      <option *ngFor="let doctor of doctors; let i = index" [value]="doctors[i].id">
-        {{doctors[i].id}}
+    <label for="doctorname">Search For Specialisations:</label>
+    <select id="doctorname" name="specialisation" class="form-control" [(ngModel)]="model.specialisation" #specialisation="ngModel" required>
+      <option *ngFor="let specialisation of specialisations; let i = index" [value]="specialisations[i].specialization">
+        {{specialisations[i].specialization}}
       </option>
     </select>
     </div>
+
+    <div class="form-group">
+      <label for="doctorname">Search For Doctors:</label>
+      <select id="doctorname" name="doctorname" class="form-control" [(ngModel)]="model.doctorname" #doctorname="ngModel" required>
+        <option *ngFor="let doctor of doctors; let i = index" [value]="doctors[i].name ">
+          {{doctors[i].name }}
+        </option>
+      </select>
+      </div>
+
+      <div class="form-group">
+        <label for="doctorname">Search For Hospitals:</label>
+        <select id="doctorname" name="hospitalname" class="form-control" [(ngModel)]="model.hospitalname" #hospitalname="ngModel" required>
+          <option *ngFor="let doctor of doctors; let i = index" [value]="doctors[i].hospitalname">
+            {{doctors[i].hospitalname}}
+          </option>
+        </select>
+        </div>
+    
 
       <div class="form-group">
     <label for="date1">Date*:</label>

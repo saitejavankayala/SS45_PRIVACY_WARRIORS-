@@ -12,7 +12,7 @@ import { DataService } from '../services/data.service';
 @Component({
   selector: 'app-blockchain',
   templateUrl: './blockchain.component.html',
-  styleUrls: ['./blockchain.component.css']
+  styleUrls: ['./blockchain.component.scss']
 })
 export class BlockchainComponent implements OnInit {
   loading = false;
@@ -58,7 +58,7 @@ export class BlockchainComponent implements OnInit {
       });
          ///alert(userArray['usertype']);
       for (let u of userArray) {
-        if (u['usertype'] == "doctor") {
+        if (u['userType'] == "doctor") {
           this.doctors.push(u);
         }
       }
