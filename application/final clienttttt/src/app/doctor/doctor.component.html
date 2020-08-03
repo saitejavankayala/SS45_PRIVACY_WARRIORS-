@@ -1,13 +1,8 @@
 <div class="wrapper">
 
-  <nav>
+  <nav style="width: 15%;">
 
-    <header>
-      <span></span>
-      John Doe
-      <a></a>
-    </header>
-
+    
     <ul>
       <li><span>Navigation</span></li>
       <li><a  routerLink="/patientdashboard" routerLinkActive="active" class="active">Dashboard</a></li>
@@ -15,7 +10,9 @@
       <li><a routerLink="/ehr" routerLinkActive="active">EhrLogin</a></li>
       <li><a routerLink="/pharmacy" routerLinkActive="active">PharmacyDetails</a></li>
       <li><a routerLink="/doctor" routerLinkActive="active">PatientMedicalHistory</a></li>
-      <li><a><button (click)="appointment()">NewAppointment</button></a></li>
+      <li><a (click)="appointment()">NewAppointment</a></li>
+      <li><a routerLink="/blockchain" routerLinkActive="active">List of Doctors</a></li>
+      
       <li><a>FAQ</a></li>
       <li><span>Other</span></li>
       <li><a>Search</a></li>
@@ -25,57 +22,79 @@
 
   </nav>
   
-  <div style="background-image: url(dap.webp);">
+  <div style="width: 100%;">
     <mat-tab-group (selectedIndexChange)="getappointments($event)">
       <mat-tab label="Requested Appointments">
-        <table mat-table [dataSource]="orders" multiTemplateDataRows class="mat-elevation-z8">
+        <table  mat-table [dataSource]="orders" multiTemplateDataRows class="mat-elevation-z8">
+         
           <ng-container matColumnDef="patientUniqueId">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> patient Id</th>
             <td mat-cell *matCellDef="let element"> {{element.patientUniqueId}} </td>
           </ng-container>
+
+
+
           <ng-container matColumnDef="patientName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
             <td mat-cell *matCellDef="let element"> {{element.patientName}} </td>
           </ng-container>
+          
           <ng-container matColumnDef="patientMobile">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </th>
               <td mat-cell *matCellDef="let element"> {{element.patientMobile}} </td>
             </ng-container>
+            
             <ng-container matColumnDef="patientDob">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Dob </th>
               <td mat-cell *matCellDef="let element"> {{element.patientDob}} </td>
             </ng-container>
+            
+            
             <ng-container matColumnDef="patientGender">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
               <td mat-cell *matCellDef="let element"> {{element.patientGender}} </td>
             </ng-container>
+           
+           
             <ng-container matColumnDef="patientMail">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
               <td mat-cell *matCellDef="let element"> {{element.patientMail}} </td>
             </ng-container>
+            
+            
             <ng-container matColumnDef="doctorId">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Type </th>
               <td mat-cell *matCellDef="let element"> {{element.doctorId}} </td>
             </ng-container>
+            
+            
             <ng-container matColumnDef="appontmentDate">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Appointment Date </th>
               <td mat-cell *matCellDef="let element"> {{element.appontmentDate}} </td>
             </ng-container>
+            
+            
             <ng-container matColumnDef="duration">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
               <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
             </ng-container>
+            
+            
             <ng-container matColumnDef="status">
               <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
 
               <td mat-cell *matCellDef="let element"> 
                 <ng-container *ngIf="element.currentAppointmentState=='REQUEST-ACCEPTED'">
                   {{element.currentAppointmentState}} 
-                  <button (click)="accept(element.patientUniqueId)" >Accept</button>
-                  <button (click)="reject(element.patientUniqueId)"> Reject</button>
+                  <button (click)="accept(element.patientUniqueId)" >Grant</button>
+                  <button (click)="reject(element.patientUniqueId)"> Revoke</button>
 
                   
-                </ng-container>
+            </ng-container>
+
+           
+
+
                 <ng-container *ngIf="element.currentAppointmentState=='REQUEST-PENDING'">
                   {{element.currentAppointmentState}} 
               

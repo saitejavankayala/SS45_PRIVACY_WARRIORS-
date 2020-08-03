@@ -18,7 +18,9 @@ export class PharmacyComponent implements OnInit {
   orders: MatTableDataSource<Order[]>;
   currentUser: any;
   pharmacydetals:any[];
-  columnsToDisplay = ['aadhar','age','key','name','patientUniqueId','pdf'];
+  converted_image:any;
+  base64Data:any;
+  columnsToDisplay = ['patientUniqueId','name','age','gender','mobile','diagnosis'];
   constructor(public nav: NavbarService,private api: ApiService, private user: UserService,public dialog: MatDialog,private router:Router,private authService:AuthService,private dataservice:DataService) { }
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class PharmacyComponent implements OnInit {
   }
   getpharmacydetails(tab) {
     if(tab==0){
+      this.converted_image;
     this.pharmacydetals  = [];
     this.api.pharmacyDetails(this.currentUser).subscribe(allUsers => {
       var userArray = Object.keys(allUsers).map(function (userIndex) {
@@ -44,9 +47,10 @@ export class PharmacyComponent implements OnInit {
       
          ///alert(userArray['usertype']);
       for (let u of userArray) {
-        if(!u['pdf']){
-          continue
-        }else{
+        if(u['patientUniqueId']==this.currentUser.userid){
+          //this.base64Data=u['pdf'];
+          //this.converted_image= "data:image/jpeg;base64,"+this.base64Data;
+          //u['pdf']=this.converted_image;
           this.pharmacydetals.push(u);
         }
       }
@@ -65,12 +69,12 @@ export class PharmacyComponent implements OnInit {
   }
 }
 export interface Order {
-aadhar: string;
-age:string;
+  patientUniqueId: string;
+name:string;
 //class: string;
 //currentState:string;
-key: string;
-name: string;
-patientUniqueId: string;
-pdf: string;
+age: string;
+gender: string;
+mobile: string;
+diagnosis: string;
 }

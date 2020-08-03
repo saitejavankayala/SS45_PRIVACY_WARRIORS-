@@ -1,6 +1,10 @@
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <div class="wrapper">
 
-    <nav>
+    <nav style="width: 15%;"> 
   
       <header>
         <span></span>
@@ -15,7 +19,7 @@
         <li><a routerLink="/ehr" routerLinkActive="active">EhrLogin</a></li>
         <li><a routerLink="/pharmacy" routerLinkActive="active">PharmacyDetails</a></li>
         <li><a routerLink="/doctor" routerLinkActive="active">PatientMedicalHistory</a></li>
-        <li><a><button (click)="appointment()">NewAppointment</button></a></li>
+        <li><a (click)="appointment()">NewAppointment</a></li>
         <li><a routerLink="/blockchain" routerLinkActive="active">List of Doctors</a></li>
        
         <li><a>FAQ</a></li>
@@ -26,23 +30,48 @@
       </ul>
   
     </nav>
-    <div class="pagecontent" style="background-color: darkslategray;">
+    <div class="pagecontent" style="background-color: white;">
    
-        <input type="text" [(ngModel)]="specialization" (input)="search()">
-        <table>
+
+      <div class="container" style="width:400px;margin-top:10%;margin-left: 500px;">
+        <div class="row">
+          
+                 <div id="custom-search-input">
+                                  <div class="input-group col-md-12">
+                                      <input type="text" class="  search-query form-control" placeholder="Search" (input)="search()" [(ngModel)]="specilazation" />
+                                      <span class="input-group-btn">
+                                          <button class="btn btn-danger" type="button">
+                                              <span class=" glyphicon glyphicon-search" style="margin-bottom:15px;"></span>
+                                          </button>
+                                      </span>
+                                  </div>
+                              </div>
+        </div>
+      </div>
+        <table style="margin-top: 120px;margin-left: 350px;">
+          <thead>
             <tr>
-            <td>Doctor specialization</td>
-            <td>Doctor Name</td>
-            <td>Hospital Name</td>
+              <th>doctorname</th>
+              <th>hospitalname</th>
+              <th>specilazation</th>
+              
             </tr>
-        
+          </thead>
+          <tbody>
             <tr *ngFor="let o of doctors">
-               <td>{{o.specialization}}</td> 
-               <td>{{o.patientName}}</td> 
-                 <td>{{o.hospital}}</td> 
+              <td data-column="First Name">{{o.doctorname}}</td>
+              <td data-column="Last Name">{{o.hospitalname}}</td>
+              <td data-column="Job Title" >{{o.specilazation}}r</td>
+             
             </tr>
+             </tbody>
         </table>
-  
+            <!--<tr *ngFor="let o of doctors">
+               <td>{{o.doctorname}}</td> 
+               <td>{{o.hospitalname}}</td> 
+                 <td>{{o.specilazation}}</td> 
+            </tr>-->
+        
   
      
     </div>

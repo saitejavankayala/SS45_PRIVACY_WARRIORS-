@@ -44,11 +44,11 @@ export class DaignosisFormComponent implements OnInit {
     this.loading = true;
     this.apiService.body1={
       name : this.model.name,
-      age:this.model.gender,
-      gender:this.model.date,
-      mobile:this.model.mail,
-      diagnosis:this.model.tel,
-      patientid:this.dataservice.patientid
+      age:this.model.age,
+      gender:this.model.gender,
+      mobile:this.model.mobile,
+      diagnosis:this.model.diagnosis,
+      patientid:this.model.aadhar
     }
     this.apiService.acceptdata().subscribe(data => {
       alert("details submitted successfully");

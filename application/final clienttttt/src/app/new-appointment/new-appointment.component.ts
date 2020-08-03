@@ -14,7 +14,6 @@ export class NewAppointmentComponent implements OnInit {
   loading = false;
   currentUser: any;
   order: Object;
-  specialisations:any[];
   doctors:any[];
   success = false;
   registeredusers:any[];
@@ -22,8 +21,7 @@ export class NewAppointmentComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.user.getCurrentUser();
-    this.getspecialisations();
-    this.getdoctorshospitals();
+    this.getdoctors();
     this.getregisteredusers(0);
   }
   getregisteredusers(tab) {
@@ -80,9 +78,9 @@ export class NewAppointmentComponent implements OnInit {
       alert("Problem creating Order: " + error['error']['message'])
     })
   }
-  getdoctorshospitals() {
+  getdoctors() {
     this.doctors  = [];
-    this.api.queryOrders(this.currentUser).subscribe(allUsers => {
+    this.api.getAllUsers().subscribe(allUsers => {
       var userArray = Object.keys(allUsers).map(function (userIndex) {
         let user = allUsers[userIndex];
         // do something with person
@@ -91,35 +89,12 @@ export class NewAppointmentComponent implements OnInit {
       });
          ///alert(userArray['usertype']);
       for (let u of userArray) {
-        if (u['userType'] == "doctor" && this.model.specialisation==u['specialization']) {
+        if (u['usertype'] == "doctor") {
           this.doctors.push(u);
         }
       }
       console.log("List of doctors: ");
       console.log(this.doctors);
-      //alert(this.doctors);
-    }, error => {
-      console.log(JSON.stringify(error));
-   alert("Problem getting list of users: " + error['error']['message']);
-    });
-  }
-  getspecialisations() {
-    this.specialisations  = [];
-    this.api.queryOrders(this.currentUser).subscribe(allUsers => {
-      var userArray = Object.keys(allUsers).map(function (userIndex) {
-        let user = allUsers[userIndex];
-        // do something with person
-        
-        return user;
-      });
-         ///alert(userArray['usertype']);
-      for (let u of userArray) {
-        if (u['userType'] == "doctor") {
-          this.specialisations.push(u);
-        }
-      }
-      console.log("List of doctors: ");
-      console.log(this.specialisations);
       //alert(this.doctors);
     }, error => {
       console.log(JSON.stringify(error));

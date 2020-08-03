@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/index';
 import { DataService } from '../services/data.service';
 import { ApiService } from '../services/api.service';
-
+import { encode, decode } from 'hi-base32';
+declare var require: any;
 @Component({
   selector: 'app-clinicianrequestsfrompatients',
   templateUrl: './clinicianrequestsfrompatients.component.html',
@@ -29,10 +30,11 @@ export class ClinicianrequestsfrompatientsComponent implements OnInit {
   }
   
   _handleReaderLoaded(readerEvt) {
-     var binaryString = readerEvt.target.result;
-            this.base64textString= btoa(binaryString);
-            console.log(btoa(binaryString));
-    }
+    var binaryString = readerEvt.target.result;
+    var base32 = require('hi-base32');
+           this.base64textString= base32.encode('String to encode');
+           console.log(this.base64textString);
+   }
   ngOnInit() {
   }
   submit(){
@@ -42,7 +44,7 @@ export class ClinicianrequestsfrompatientsComponent implements OnInit {
       age:this.model.gender,
       gender:this.model.date,
       aadhar:this.model.aadhar,   
-      pdf:this.model.pdf,
+      pdf:this.base64textString,
       patientUniqueId:this.model.patientUniqueId,
       prescriptionId:"prescription"+uuid()
     }

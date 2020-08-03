@@ -1,21 +1,16 @@
 <div class="wrapper">
 
-    <nav>
+    <nav style="width: 15%;">
   
-      <header>
-        <span></span>
-        John Doe
-        <a></a>
-      </header>
-  
+     
       <ul>
         <li><span>Navigation</span></li>
         <li><a  routerLink="/patientdashboard" routerLinkActive="active" class="active">Dashboard</a></li>
         <li><a routerLink="/user" routerLinkActive="active">Userprofile</a></li>
         <li><a routerLink="/ehr" routerLinkActive="active">EhrLogin</a></li>
-        <li><a routerLink="/pharmacy" routerLinkActive="active">PharmacyDetails</a></li>
-        <li><a routerLink="/doctor" routerLinkActive="active">PatientMedicalHistory</a></li>
-        <li><a><button (click)="appointment()">NewAppointment</button></a></li>
+        <li><a routerLink="/pharmacy" routerLinkActive="active">PatientDetails</a></li>
+        <li><a routerLink="/doctor" routerLinkActive="active">AppoinmentHistory</a></li>
+        <li><a (click)="appointment()">NewAppointment</a></li>
         <li><a>FAQ</a></li>
         <li><span>Other</span></li>
         <li><a>Search</a></li>
@@ -24,36 +19,37 @@
       </ul>
   
     </nav>
-    <div class="pagecontent" style="background-color: darkslategray;">
+    <div class="pagecontent" style="background-color: darkslategray; width: 100%;">
  
       <div>
         <mat-tab-group (selectedIndexChange)="getappointments($event)">
           <mat-tab label="Requested Appointments">
             <table mat-table [dataSource]="orders" multiTemplateDataRows class="mat-elevation-z8">
-              <ng-container matColumnDef="aadhar">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Aadhar</th>
-                <td mat-cell *matCellDef="let element"> {{element.aadhar}} </td>
-              </ng-container>
-              <ng-container matColumnDef="key">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> prescription Id </th>
-                <td mat-cell *matCellDef="let element"> {{element.key}} </td>
-              </ng-container>
               <ng-container matColumnDef="patientUniqueId">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> patientUniqueId </th>
-                  <td mat-cell *matCellDef="let element"> {{element.patientUniqueId}} </td>
-                </ng-container>
-                <ng-container matColumnDef="name">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> patient-name </th>
-                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-                </ng-container>
-                <ng-container matColumnDef="age">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Patient-age </th>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Aadhar</th>
+                <td mat-cell *matCellDef="let element"> {{element.patientUniqueId}} </td>
+              </ng-container>
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> patient-name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+              </ng-container>
+              <ng-container matColumnDef="age">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> patient-age </th>
                   <td mat-cell *matCellDef="let element"> {{element.age}} </td>
                 </ng-container>
-                <ng-container matColumnDef="pdf">
-                  <th mat-header-cell *matHeaderCellDef mat-sort-header>Pdf </th>
-                  <td mat-cell *matCellDef="let element"> {{element.pdf}} </td>
-                </ng-container>              
+                <ng-container matColumnDef="gender">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> patient-gender </th>
+                  <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                </ng-container>
+                <ng-container matColumnDef="mobile">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </th>
+                  <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+                </ng-container>
+                <ng-container matColumnDef="diagnosis">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> diagnosis </th>
+                  <td mat-cell *matCellDef="let element"> {{element.diagnosis}} </td>
+                </ng-container>
+                             
               <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
               <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"></tr>
             </table>

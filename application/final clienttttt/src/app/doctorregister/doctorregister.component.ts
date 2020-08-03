@@ -34,7 +34,7 @@ export class DoctorregisterComponent implements OnInit {
       todaydate:this.currentDate,
       dob:this.model.dob,
       specialization:this.model.specialization,
-      hospital:this.currentUser.userid  
+      hospital:this.model.hospitalname
     }
     console.log(this.currentUser.id);
     this.authService.registerd(this.model).subscribe(data => {

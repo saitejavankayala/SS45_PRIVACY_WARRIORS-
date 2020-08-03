@@ -1,12 +1,6 @@
 <div class="wrapper">
 
-  <nav>
-
-    <header>
-      <span></span>
-      John Doe
-      <a></a>
-    </header>
+  <nav style="width: 15%;">
 
     <ul>
       <li><span>Navigation</span></li>
@@ -49,6 +43,10 @@
             <input type="password" class="form-control" placeholder="Password" name="dpassword" [(ngModel)]="model.dpassword" #dpassword="ngModel" required pattern="^(?:(?:(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]))|(?:(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))|(?:(?=.*[0-9])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))|(?:(?=.*[0-9])(?=.*[a-z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]))).{8,32}$"/>
             <div *ngIf="ff.submitted && !dpassword.valid" class="help-block">password should be:At least 8 characters in length, but no more than 32.
               <br>atleast<br> 1       lowercase<br>1        uppercase<br>1 digit <br>1 special character</div>
+          </div>
+          <div class="input_field" > <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+            <input type="text" class="form-control" placeholder="hospitalname" name="hospitalname" [(ngModel)]="model.hospitalname" #hospitalname="ngModel" required/>
+            <div *ngIf="ff.submitted && !hospitalname.valid" class="help-block">hospitalname is required</div>
           </div>
           <div class="input_field" > <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
             <input type="text" class="form-control" placeholder="Name" name="duserid" [(ngModel)]="model. duserid" #duserid="ngModel" required/>

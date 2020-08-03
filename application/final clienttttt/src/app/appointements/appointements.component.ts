@@ -66,7 +66,7 @@ export class AppointementsComponent implements OnInit {
       this.loading = true;
     this.api.acceptappointment().subscribe(data => {
       alert("accepted appointment");
-      this.router.navigate(['/daignosis-form']);
+      //this.router.navigate(['/daignosis-form']);
     }, error => {
       this.loading = false;
       console.log(JSON.stringify(error));

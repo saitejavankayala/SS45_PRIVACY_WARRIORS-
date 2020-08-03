@@ -23,7 +23,7 @@ export class BlockchainComponent implements OnInit {
   totals:number=0;
   accepteds:number=0;
   rejecteds:number=0;*/
-  specialization:string;
+  specilazation:string;
   constructor(public nav: NavbarService,private api: ApiService, private user: UserService, public dialog: MatDialog,private router:Router,private authService:AuthService,private dataservice:DataService) { }
   ngOnInit() {
     this.nav.hide();
@@ -37,19 +37,19 @@ export class BlockchainComponent implements OnInit {
     this.getdoctors();
   }
   search(){
-    if(this.specialization!=""){
+    if(this.specilazation!=""){
      this.doctors=this.doctors.filter(res=>{
-       return res.name.toLocaleLowerCase().match(this.specialization.toLocaleLowerCase());
+       return res.specilazation.toLocaleLowerCase().match(this.specilazation.toLocaleLowerCase());
       });
     }
-    else if(this.specialization==""){
+    else if(this.specilazation==""){
      this.ngOnInit();
     }
     
   }
   getdoctors() {
     this.doctors  = [];
-    this.api.queryOrders(this.currentUser).subscribe(allUsers => {
+    this.api.alldoctors(this.currentUser).subscribe(allUsers => {
       var userArray = Object.keys(allUsers).map(function (userIndex) {
         let user = allUsers[userIndex];
         // do something with person
@@ -58,9 +58,9 @@ export class BlockchainComponent implements OnInit {
       });
          ///alert(userArray['usertype']);
       for (let u of userArray) {
-        if (u['userType'] == "doctor") {
+       
           this.doctors.push(u);
-        }
+        
       }
       console.log("List of doctors: ");
       console.log(this.doctors);

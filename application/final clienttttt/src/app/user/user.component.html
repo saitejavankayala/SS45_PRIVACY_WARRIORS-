@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-    <nav>
+    <nav style="width: 15%;">
   
       <header>
         <span></span>
@@ -15,7 +15,9 @@
         <li><a routerLink="/ehr" routerLinkActive="active">EhrLogin</a></li>
         <li><a routerLink="/pharmacy" routerLinkActive="active">PharmacyDetails</a></li>
         <li><a routerLink="/doctor" routerLinkActive="active">PatientMedicalHistory</a></li>
-        <li><a><button (click)="appointment()">NewAppointment</button></a></li>
+        <li><a (click)="appointment()">NewAppointment</a></li>
+        <li><a routerLink="/blockchain" routerLinkActive="active">List of Doctors</a></li>
+      
         <li><a>FAQ</a></li>
         <li><span>Other</span></li>
         <li><a>Search</a></li>

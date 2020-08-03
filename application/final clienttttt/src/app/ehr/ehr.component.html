@@ -24,80 +24,69 @@
       </ul>
   
     </nav>
-    <div class="pagecontent" style="background-color: darkslategray;">
-    <div class="cards-list" >
+   
+    <nav>
   
+      <header>
+        <span></span>
+        John Doe
+        <a></a>
+      </header>
   
+      <ul>
+        <li><span>Navigation</span></li>
+        <li><a  routerLink="/patientdashboard" routerLinkActive="active" class="active">Dashboard</a></li>
+        <li><a routerLink="/user" routerLinkActive="active">Userprofile</a></li>
+        <li><a routerLink="/ehr" routerLinkActive="active">EhrLogin</a></li>
+        <li><a routerLink="/pharmacy" routerLinkActive="active">PharmacyDetails</a></li>
+        <li><a routerLink="/doctor" routerLinkActive="active">PatientMedicalHistory</a></li>
+        <li><a><button (click)="appointment()">NewAppointment</button></a></li>
+        <li><a>FAQ</a></li>
+        <li><span>Other</span></li>
+        <li><a>Search</a></li>
+        <li><a>Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
   
+    </nav>
+    <div>
+      <mat-tab-group (selectedIndexChange)="getappointments($event)">
+        <mat-tab label="Requested Appointments">
+          <table mat-table [dataSource]="orders" multiTemplateDataRows class="mat-elevation-z8">
+            <ng-container matColumnDef="patientId">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Aadhar</th>
+              <td mat-cell *matCellDef="let element"> {{element.patientId}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> patient-name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="age">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> patient-age </th>
+                <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+              </ng-container>
+              <ng-container matColumnDef="gender">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> patient-gender </th>
+                <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+              </ng-container>
+              <ng-container matColumnDef="mobile">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile </th>
+                <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+              </ng-container>
+              <ng-container matColumnDef="diagnosis">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> diagnosis </th>
+                <td mat-cell *matCellDef="let element"> {{element.diagnosis}} </td>
+              </ng-container>
+                           
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"></tr>
+          </table>
+        </mat-tab>
+    </mat-tab-group>
+
+  </div>
+      
     
-      <div class="card 1">
-        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
-        <div class="card_title title-white">
-          <p>Card Title</p>
-        </div>
-      </div>
-  
-  
-  
-      
-        <div class="card 2">
-        <div class="card_image">
-          <img src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg" />
-          </div>
-        <div class="card_title title-white">
-          <p>Card Title</p>
-        </div>
-      </div>
-  
-  
-  
-  
-  
-  
-  
-      
-      <div class="card 3">
-        <div class="card_image">
-          <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" />
-        </div>
-        <div class="card_title">
-          <p>Card Title</p>
-        </div>
-      </div>
-        
-  
-  
-  
-  
-        <div class="card 4">
-        <div class="card_image">
-          <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" />
-          </div>
-        <div class="card_title title-black">
-          <p>Card Title</p>
-        </div>
-        </div>
-      
-    
-      <div class="card 1">
-        <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
-        <div class="card_title title-white">
-          <p>Card Title</p>
-        </div>
-      </div>
-      
-        <div class="card 2">
-        <div class="card_image">
-          <img src="https://cdn.blackmilkclothing.com/media/wysiwyg/Wallpapers/PhoneWallpapers_FloralCoral.jpg" />
-          </div>
-        <div class="card_title title-white">
-          <p>Card Title</p>
-        </div>
-      </div>
-      
-      
-      
-    </div>
     
   </div>
   <router-outlet></router-outlet>

@@ -14,4 +14,8 @@ export class AppComponent implements OnInit {
     this.nav.show();
     
   }
+  sai(){
+    window.location.href = "http://localhost:3001/VoiceForm";
+
+  }
 }

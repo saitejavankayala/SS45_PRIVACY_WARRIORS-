@@ -1,0 +1,12 @@
+[
+    { "doctorname":"v.prasad", "hospitalname":"rims","specilazation":"dentist" },
+    { "doctorname":"s.sony",  "hospitalname":"vims","specilazation":"gynaecologist"},
+    { "doctorname":"k.deepishika", "hospitalname":"apollo","specilazation":"dentist" },
+    { "doctorname":"p.priiyanka", "hospitalname":"gandhi hospital","specilazation":"orthopedician" },
+    { "doctorname":"s.rajendra", "hospitalname":"gmtit care","specilazation":"cardiologit" },
+    { "doctorname":"t.bhaskar", "hospitalname":"kGH","specilazation":"skin specilaist" },
+    { "doctorname":"k.sudhakar", "hospitalname":"rims","specilazation":"cardiologist" },
+    { "doctorname":"s.vaihnai", "hospitalname":"rims","specilazation":"dentist" },
+    { "doctorname":"l.prabhakar", "hospitalname":"rims","specilazation":"eye specialist" }
+
+  ]

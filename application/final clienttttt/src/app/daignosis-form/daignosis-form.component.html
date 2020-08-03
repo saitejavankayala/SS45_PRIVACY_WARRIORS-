@@ -6,7 +6,7 @@ $(".chosen-select").chosen();
 </head>
 <div class="wrapper">
 
-    <nav>
+    <nav style="width: 15%;">
   
       <header>
         
@@ -21,8 +21,7 @@ $(".chosen-select").chosen();
         <li><a routerLink="/profile" routerLinkActive="active">Userprofile</a></li>
         <li><a routerLink="/appointmenthistory" routerLinkActive="active">appointmenthistory</a></li>
         <li><a routerLink="/appointments" routerLinkActive="active">appointments</a></li>
-        <li><a routerLink="/" routerLinkActive="active"></a></li>
-        <li><a routerLink="/" routerLinkActive="active"></a></li>
+        <li><a routerLink="/daignosis-form" routerLinkActive="active">daignosis-form</a></li>
         <li><a>FAQ</a></li>
         <li><span>Other</span></li>
         <li><a>Search</a></li>
@@ -35,55 +34,37 @@ $(".chosen-select").chosen();
 
     <!-- START FORM BODY -->
     <div id="container">
-      <header>
-        <img src="https://auctionking.com/assets/charity/logo/YourLogoHere.png">
-        <h1>Diagnosis Form</h1>
-      </header>
+     <h1 style="margin-left:350px;">Diagnosis Form</h1>
       
       <form (ngSubmit)="ff.form.valid && submit()" #ff="ngForm" novalidate>
         <fieldset>
-          <legend>Fields marked with * are required</legend>
-          <br/>
-
+          
           <!-- START DIV part-1 PERSONAL INFORMATION -->
           <div id="part-1">
-            <h2>Personal Information (required)</h2>
-            <label for="name">First Name</label>
-            <input type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required>
+            <label for="name">AADHAR NUMBER</label>
+            <input style="border-radius: 25px;" type="text" class="form-control" name="aadhar" [(ngModel)]="model.aadhar" #aadhar="ngModel" required>
+            <br/>
+            
+            <label for="name">PAITENT NAME</label>
+            <input style="border-radius: 25px;" type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required>
             <br/>
             <label for="age">Age</label>
-            <input type="text" class="form-control" name="age" [(ngModel)]="model.age" #age="ngModel" required>
+            <input  style="border-radius: 25px;" type="text" class="form-control" name="age" [(ngModel)]="model.age" #age="ngModel" required>
             <br/>
             <label for="gender">Gender</label>
-            <input type="text" class="form-control" name="gender" [(ngModel)]="model.gender" #gender="ngModel" required>
+            <input   style="border-radius: 25px;" type="text" class="form-control" name="gender" [(ngModel)]="model.gender" #gender="ngModel" required>
             <br/>
             <label for="mobile">Mobile</label>
-            <input type="text" class="form-control" name="mobile" [(ngModel)]="model.mobile" #mobile="ngModel" required>
+            <input   style="border-radius: 25px;"  type="text" class="form-control" name="mobile" [(ngModel)]="model.mobile" #mobile="ngModel" required>
             <br/>
             <label for="diagnosis">Prescreption</label>
             <br/>
-            <textarea rows="5" class="form-control" name="diagnosis" [(ngModel)]="model.diagnosis" #diagnosis="ngModel" cols="50" id="prescreption" tabindex="-1"></textarea>
-            <br>
-            <div class="col-xs-6">
-              <label>Clinicians :</label>
-              <select class="form-control" name="select1" id="select1">
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-               
-              </select>
-            </div>
+            <textarea  style="border-radius: 25px;" rows="5" class="form-control" name="diagnosis" [(ngModel)]="model.diagnosis" #diagnosis="ngModel" cols="50" id="prescreption" tabindex="-1"></textarea>
             <br>
             <br>
             <br>
-            <div class="col-xs-6">
-              <select class="form-control" name="select2" id="select2">
-                <option value="yes">Jitendra</option>
-                <option value="yes">Sarvani</option>
-                <option value="yes">Saiteja</option>
-               
-                
-            </select>
-            </div><!--<label for="lab-reports">Lab Reports</label>
+            <br>
+          <!--<label for="lab-reports">Lab Reports</label>
             <br/>
             <textarea rows="5" class="form-control" name="labtests" [(ngModel)]="model.labtests" #labtests="ngModel" cols="50" name="labtests" tabindex="-1"></textarea>
             <br>

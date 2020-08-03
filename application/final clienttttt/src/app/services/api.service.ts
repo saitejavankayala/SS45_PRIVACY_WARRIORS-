@@ -41,6 +41,12 @@ export class ApiService {
     headers = headers.append('Authorization', 'Basic ' + btoa('admin:adminpw')); 
     return this.httpClient.get(this.baseUrl + '/api/users/'+this.id, {headers:headers});
   }
+  alldoctors(user) {
+    let headers = new HttpHeaders();
+    headers = this.createUserAuthorizationHeader(headers);
+    return this.httpClient.get(this.baseUrl + '/api/alldoctors/'+user.userid, {headers:headers})
+  }
+ 
   queryOrders(user) {
     let headers = new HttpHeaders();
     headers = this.createUserAuthorizationHeader(headers);

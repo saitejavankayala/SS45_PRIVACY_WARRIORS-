@@ -40,7 +40,9 @@
 			Login
 		  </a>
 		  <button  mat-raised-button color="accent" mat-button [matMenuTriggerFor]="menu"><mat-icon>lock</mat-icon>Signup</button>
-  <mat-menu #menu="matMenu">
+		  <button (click)="sai()" mat-raised-button color="accent" mat-button [matMenuTriggerFor]="menu"><mat-icon>lock</mat-icon>Signvr</button>
+ 
+		  <mat-menu #menu="matMenu">
 	<a  mat-menu-item [routerLink]="['/register']" routerLinkActive="active">Register as Patient</a>
 	<a  mat-menu-item [routerLink]="['/registerh']" routerLinkActive="active">Register as Hospital</a>
 	<!--<a  mat-menu-item [routerLink]="['/registerd']" routerLinkActive="active">Register as Doctor</a>-->

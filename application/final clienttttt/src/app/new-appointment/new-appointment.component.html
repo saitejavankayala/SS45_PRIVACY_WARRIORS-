@@ -1,13 +1,8 @@
 <div class="wrapper">
 
-  <nav>
+  <nav style="width: 15%;">
 
-    <header>
-      <span></span>
-      John Doe
-      <a></a>
-    </header>
-
+   
     <ul>
       <li><span>Navigation</span></li>
       <li><a  routerLink="/patientdashboard" routerLinkActive="active" class="active">Dashboard</a></li>
@@ -16,6 +11,8 @@
       <li><a routerLink="/pharmacy" routerLinkActive="active">PharmacyDetails</a></li>
       <li><a routerLink="/doctor" routerLinkActive="active">PatientMedicalHistory</a></li>
       <li><a (click)="appointment()">NewAppointment</a></li>
+      <li><a routerLink="/blockchain" routerLinkActive="active">List of Doctors</a></li>
+      
       <li><a>FAQ</a></li>
       <li><span>Other</span></li>
       <li><a>Search</a></li>
@@ -92,32 +89,13 @@
     </div>
 
     <div class="form-group">
-    <label for="doctorname">Search For Specialisations:</label>
-    <select id="doctorname" name="specialisation" class="form-control" [(ngModel)]="model.specialisation" #specialisation="ngModel" required>
-      <option *ngFor="let specialisation of specialisations; let i = index" [value]="specialisations[i].specialization">
-        {{specialisations[i].specialization}}
+    <label for="doctorname">Search For Doctors:</label>
+    <select id="doctorname" name="doctorname" class="form-control" [(ngModel)]="model.doctorname" #doctorname="ngModel" required>
+      <option *ngFor="let doctor of doctors; let i = index" [value]="doctors[i].id">
+        {{doctors[i].id}}
       </option>
     </select>
     </div>
-
-    <div class="form-group">
-      <label for="doctorname">Search For Doctors:</label>
-      <select id="doctorname" name="doctorname" class="form-control" [(ngModel)]="model.doctorname" #doctorname="ngModel" required>
-        <option *ngFor="let doctor of doctors; let i = index" [value]="doctors[i].name ">
-          {{doctors[i].name }}
-        </option>
-      </select>
-      </div>
-
-      <div class="form-group">
-        <label for="doctorname">Search For Hospitals:</label>
-        <select id="doctorname" name="hospitalname" class="form-control" [(ngModel)]="model.hospitalname" #hospitalname="ngModel" required>
-          <option *ngFor="let doctor of doctors; let i = index" [value]="doctors[i].hospitalname">
-            {{doctors[i].hospitalname}}
-          </option>
-        </select>
-        </div>
-    
 
       <div class="form-group">
     <label for="date1">Date*:</label>

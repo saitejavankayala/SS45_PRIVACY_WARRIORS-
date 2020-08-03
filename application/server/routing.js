@@ -4,6 +4,7 @@
 * SPDX-License-Identifier: Apache-2.0
 */
 'use strict';
+const fs=require('fs');
 const express = require('express');
 const utils = require('./org1.js');
 
@@ -11,11 +12,12 @@ const supplychainRouter = express.Router();
 
 // Bring key classes into scope, most importantly Fabric SDK network class
 const Ehr = require('../../contract/lib/ehrstate.js');
-const reports = require('../../contract/lib/clinician.js');
+const reports1 = require('../../contract/lib/clinician.js');
 const diagnosis = require('../../contract/lib/diagnosis.js');
 
 const org1 = require('./org1.js');
 const register = require('../../contract/lib/register.js');
+const doctor=require('./doctordetails.json');
 
 const STATUS_SUCCESS = 200;
 const STATUS_CLIENT_ERROR = 400;
@@ -192,6 +194,21 @@ supplychainRouter.route('/accessrevoke/').post(function (request, response) {
                 "There was a problem getting the list of appointments."));
         });
 }); 
+supplychainRouter.route('/alldoctors/:userid').get(function (request, response) {
+    console.log(request.params.userid);
+    console.log(doctor);
+    let appointments=doctor;
+    response.send(appointments);
+
+}); 
+supplychainRouter.route('/vr-user/').post(function (request, response) {
+    console.log(request.body);
+
+   // console.log(doctor);
+    //let appointments=doctor;
+    //response.send(appointments);
+
+}); 
 
 supplychainRouter.route('/appointment/:userid').get(function (request, response) {
     console.log(request.params.userid);
@@ -210,12 +227,12 @@ supplychainRouter.route('/appointment/:userid').get(function (request, response)
 });  //  process route orders/
 supplychainRouter.route('/pharmacy-details/:userid').get(function (request, response) {
     console.log(request.params.userid);
-    submitTx(request, 'queryAlldata', request.params.userid)
+    submitTx(request, 'queryAllAppointments', request.params.userid)
         .then((queryOrderResponse) => {
             //  response is already a string;  not a buffer
             let appointments = queryOrderResponse;
             response.status(STATUS_SUCCESS);
-          // console.log(appointments);
+          console.log(appointments);
             response.send(appointments);
         }, (error) => {
             response.status(STATUS_SERVER_ERROR);
@@ -265,7 +282,8 @@ supplychainRouter.route('/prescription/').post(function (request, response) {
          console.log('\nProcess requesting appointment.');
          let diag = diagnosis.fromBuffer(result);
       //   console.log(`userid ${diag.patientUniqueId},name=${diag.name} ,age=${diag.age},gender=${diag.gender},mobile=${diag.mobile},prescription=${diag.diagnosis}`);
-         response.status(STATUS_SUCCESS);
+      console.log(result);
+      response.status(STATUS_SUCCESS);
          response.send(diag);
      }, (error) => {
          response.status(STATUS_SERVER_ERROR);
@@ -275,21 +293,22 @@ supplychainRouter.route('/prescription/').post(function (request, response) {
 });
 supplychainRouter.route('/reports/').post(function (request, response) {
     console.log("hiii");
-    console.log(request.body);
-    submitTx(request, 'reportsStorage', JSON.stringify(request.body))
-     .then((result) => {
-         // process response
-         console.log('\nProcess report storage.');
-         let rep = reports.fromBuffer(result);
-         
-      //   console.log(`userid ${rep.patientUniqueId},name=${rep.name} , age = ${rep.age  },gender=${rep.gender},aadhar=${rep.aadhar},pdf=${rep.pdf}`);
-         response.status(STATUS_SUCCESS);
-         response.send(rep);
-     }, (error) => {
-         response.status(STATUS_SERVER_ERROR);
-         response.send(utils.prepareErrorResponse(error, STATUS_SERVER_ERROR,
-             "There was a problem in accepting request."));
-     });
+    const reportdetails= JSON.parse(request);
+        const patientUniqueId=reportdetails.request.body.patientUniqueId;
+        const patientname=reportdetails.request.body.name;
+        const patientage=reportdetails.request.body.age;
+        const patientaadhar=reportdetails.request.body.aadhar;
+        const labreport=reportdetails.request.body.report;
+    
+      let reports={
+          patient_uniqueId :   patientUniqueId,
+          name : patientname,
+          aadhar : patientaadhar,
+          age: patientage,
+          report: labreport,
+      };
+      let data=JSON.stringify(reports);
+      fs.writeFileSync('labreports.json',data);
 });
 
 
